@@ -1,0 +1,61 @@
+#!name = Mac DNS 防泄漏
+#!desc = Cloudflare DoH 经绑定的 PROXY，拦截进入 Loon 的常见独立 DNS 端口；检测网站走同一代理。启用前需关闭查询回落、将 DoH 模式设为 Rule，并检查主配置与其他插件的 DNS。适配 Loon for Mac 0.5.0 (1009)；完整步骤见仓库说明。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = DNS,DoH,隐私,macOS
+#!type = normal
+
+# v1.0.0 | MIT
+# 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
+# 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
+# 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
+# PROXY 必须绑定一个可用的境外代理策略，不能指向 DIRECT 或可直连回退的组。
+# doh-server 仅追加：启用前核对其他来源的加密 DNS，不会自动替换它们。
+# hijack-dns 不受插件 General 支持，请按 docs/main-config.txt 合并到主配置。
+
+[General]
+doh-server = https://1.1.1.1/dns-query,https://1.0.0.1/dns-query
+
+[Rule]
+# 固定 IP 的 DoH 端点不需要先做域名解析；保留正常 TLS 证书校验。
+AND,((DEST-PORT,443),(IP-CIDR,1.1.1.1/32,no-resolve)),PROXY
+AND,((DEST-PORT,443),(IP-CIDR,1.0.0.1/32,no-resolve)),PROXY
+# 为独立节点引导 DNS 及可选国内分流版保留直连加密路径。
+# 这两条不向全局 DNS 列表添加阿里 DNS。
+AND,((DEST-PORT,443),(IP-CIDR,223.5.5.5/32,no-resolve)),DIRECT
+AND,((DEST-PORT,443),(IP-CIDR,223.6.6.6/32,no-resolve)),DIRECT
+
+# 让检测页面与代理 DNS 使用相同出口；这些规则本身不能证明没有泄漏。
+DOMAIN-SUFFIX,dnsleaktest.com,PROXY
+DOMAIN-SUFFIX,dnsleak.com,PROXY
+DOMAIN-SUFFIX,ipleak.net,PROXY
+DOMAIN-SUFFIX,expressvpn.com,PROXY
+DOMAIN-SUFFIX,nordvpn.com,PROXY
+DOMAIN-SUFFIX,surfshark.com,PROXY
+
+# 仅作用于进入 Loon 且实际命中这些规则的 TCP/UDP 连接。
+# 主配置 UDP DNS 接管若未生效，53 端口可能被拒绝而不是得到透明代答。
+# 853/784 同时阻断常见 DoT/DoQ，也会影响这些端口上的非 DNS 服务。
+# 本地规则优先于插件规则；必须排查已有放行规则。
+DEST-PORT,53,REJECT
+DEST-PORT,853,REJECT
+DEST-PORT,784,REJECT
+
+[Host]
+# 明确检测域名的解析服务器；根域名与子域名分别声明。
+# 不保证覆盖第三方页面加载的所有外部域名，仍须检查全局 DNS 配置。
+dnsleaktest.com = server:https://1.1.1.1/dns-query
+*.dnsleaktest.com = server:https://1.1.1.1/dns-query
+dnsleak.com = server:https://1.1.1.1/dns-query
+*.dnsleak.com = server:https://1.1.1.1/dns-query
+ipleak.net = server:https://1.1.1.1/dns-query
+*.ipleak.net = server:https://1.1.1.1/dns-query
+expressvpn.com = server:https://1.1.1.1/dns-query
+*.expressvpn.com = server:https://1.1.1.1/dns-query
+nordvpn.com = server:https://1.1.1.1/dns-query
+*.nordvpn.com = server:https://1.1.1.1/dns-query
+surfshark.com = server:https://1.1.1.1/dns-query
+*.surfshark.com = server:https://1.1.1.1/dns-query

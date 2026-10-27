@@ -1,0 +1,289 @@
+#!name = Mac DNS 防泄漏 · 国内分流版
+#!desc = 默认 Cloudflare DoH 经 PROXY；.cn、中文中国域名及清单内常见国内服务改用直连阿里 DoH。业务访问仍遵守原分流。需关闭查询回落、DoH 模式设为 Rule，并按仓库说明配置 DNS 接管及节点引导。与标准版只启用一个。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = DNS,DoH,隐私,macOS
+#!type = normal
+
+# v1.0.0 | MIT
+# 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
+# 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
+# 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
+# PROXY 必须绑定一个可用的境外代理策略，不能指向 DIRECT 或可直连回退的组。
+# doh-server 仅追加：启用前核对其他来源的加密 DNS，不会自动替换它们。
+# hijack-dns 不受插件 General 支持，请按 docs/main-config.txt 合并到主配置。
+
+[General]
+doh-server = https://1.1.1.1/dns-query,https://1.0.0.1/dns-query
+
+[Rule]
+# 固定 IP 的 DoH 端点不需要先做域名解析；保留正常 TLS 证书校验。
+AND,((DEST-PORT,443),(IP-CIDR,1.1.1.1/32,no-resolve)),PROXY
+AND,((DEST-PORT,443),(IP-CIDR,1.0.0.1/32,no-resolve)),PROXY
+# 为独立节点引导 DNS 及可选国内分流版保留直连加密路径。
+# 这两条不向全局 DNS 列表添加阿里 DNS。
+AND,((DEST-PORT,443),(IP-CIDR,223.5.5.5/32,no-resolve)),DIRECT
+AND,((DEST-PORT,443),(IP-CIDR,223.6.6.6/32,no-resolve)),DIRECT
+
+# 让检测页面与代理 DNS 使用相同出口；这些规则本身不能证明没有泄漏。
+DOMAIN-SUFFIX,dnsleaktest.com,PROXY
+DOMAIN-SUFFIX,dnsleak.com,PROXY
+DOMAIN-SUFFIX,ipleak.net,PROXY
+DOMAIN-SUFFIX,expressvpn.com,PROXY
+DOMAIN-SUFFIX,nordvpn.com,PROXY
+DOMAIN-SUFFIX,surfshark.com,PROXY
+
+# 仅作用于进入 Loon 且实际命中这些规则的 TCP/UDP 连接。
+# 主配置 UDP DNS 接管若未生效，53 端口可能被拒绝而不是得到透明代答。
+# 853/784 同时阻断常见 DoT/DoQ，也会影响这些端口上的非 DNS 服务。
+# 本地规则优先于插件规则；必须排查已有放行规则。
+DEST-PORT,53,REJECT
+DEST-PORT,853,REJECT
+DEST-PORT,784,REJECT
+
+[Host]
+# 明确检测域名的解析服务器；根域名与子域名分别声明。
+# 不保证覆盖第三方页面加载的所有外部域名，仍须检查全局 DNS 配置。
+dnsleaktest.com = server:https://1.1.1.1/dns-query
+*.dnsleaktest.com = server:https://1.1.1.1/dns-query
+dnsleak.com = server:https://1.1.1.1/dns-query
+*.dnsleak.com = server:https://1.1.1.1/dns-query
+ipleak.net = server:https://1.1.1.1/dns-query
+*.ipleak.net = server:https://1.1.1.1/dns-query
+expressvpn.com = server:https://1.1.1.1/dns-query
+*.expressvpn.com = server:https://1.1.1.1/dns-query
+nordvpn.com = server:https://1.1.1.1/dns-query
+*.nordvpn.com = server:https://1.1.1.1/dns-query
+surfshark.com = server:https://1.1.1.1/dns-query
+*.surfshark.com = server:https://1.1.1.1/dns-query
+
+# 以下是可选的国内解析分流；不改变业务连接的访问出口。
+# 仅覆盖这些域名；默认使用一个阿里 DoH 端点，不声明自动故障切换。
+*.cn = server:https://223.5.5.5/dns-query
+*.xn--fiqs8s = server:https://223.5.5.5/dns-query
+*.xn--fiqz9s = server:https://223.5.5.5/dns-query
+qq.com = server:https://223.5.5.5/dns-query
+*.qq.com = server:https://223.5.5.5/dns-query
+tencent.com = server:https://223.5.5.5/dns-query
+*.tencent.com = server:https://223.5.5.5/dns-query
+gtimg.com = server:https://223.5.5.5/dns-query
+*.gtimg.com = server:https://223.5.5.5/dns-query
+weixin.com = server:https://223.5.5.5/dns-query
+*.weixin.com = server:https://223.5.5.5/dns-query
+myqcloud.com = server:https://223.5.5.5/dns-query
+*.myqcloud.com = server:https://223.5.5.5/dns-query
+tencent-cloud.net = server:https://223.5.5.5/dns-query
+*.tencent-cloud.net = server:https://223.5.5.5/dns-query
+bilibili.com = server:https://223.5.5.5/dns-query
+*.bilibili.com = server:https://223.5.5.5/dns-query
+biliapi.com = server:https://223.5.5.5/dns-query
+*.biliapi.com = server:https://223.5.5.5/dns-query
+biliapi.net = server:https://223.5.5.5/dns-query
+*.biliapi.net = server:https://223.5.5.5/dns-query
+biliimg.com = server:https://223.5.5.5/dns-query
+*.biliimg.com = server:https://223.5.5.5/dns-query
+biligame.com = server:https://223.5.5.5/dns-query
+*.biligame.com = server:https://223.5.5.5/dns-query
+biligame.net = server:https://223.5.5.5/dns-query
+*.biligame.net = server:https://223.5.5.5/dns-query
+bilivideo.com = server:https://223.5.5.5/dns-query
+*.bilivideo.com = server:https://223.5.5.5/dns-query
+hdslb.com = server:https://223.5.5.5/dns-query
+*.hdslb.com = server:https://223.5.5.5/dns-query
+acgvideo.com = server:https://223.5.5.5/dns-query
+*.acgvideo.com = server:https://223.5.5.5/dns-query
+baidu.com = server:https://223.5.5.5/dns-query
+*.baidu.com = server:https://223.5.5.5/dns-query
+baidubce.com = server:https://223.5.5.5/dns-query
+*.baidubce.com = server:https://223.5.5.5/dns-query
+bdimg.com = server:https://223.5.5.5/dns-query
+*.bdimg.com = server:https://223.5.5.5/dns-query
+bdstatic.com = server:https://223.5.5.5/dns-query
+*.bdstatic.com = server:https://223.5.5.5/dns-query
+bcebos.com = server:https://223.5.5.5/dns-query
+*.bcebos.com = server:https://223.5.5.5/dns-query
+shifen.com = server:https://223.5.5.5/dns-query
+*.shifen.com = server:https://223.5.5.5/dns-query
+baidustatic.com = server:https://223.5.5.5/dns-query
+*.baidustatic.com = server:https://223.5.5.5/dns-query
+alibaba.com = server:https://223.5.5.5/dns-query
+*.alibaba.com = server:https://223.5.5.5/dns-query
+aliyun.com = server:https://223.5.5.5/dns-query
+*.aliyun.com = server:https://223.5.5.5/dns-query
+aliyuncs.com = server:https://223.5.5.5/dns-query
+*.aliyuncs.com = server:https://223.5.5.5/dns-query
+aliapp.org = server:https://223.5.5.5/dns-query
+*.aliapp.org = server:https://223.5.5.5/dns-query
+alicdn.com = server:https://223.5.5.5/dns-query
+*.alicdn.com = server:https://223.5.5.5/dns-query
+alipay.com = server:https://223.5.5.5/dns-query
+*.alipay.com = server:https://223.5.5.5/dns-query
+alipayobjects.com = server:https://223.5.5.5/dns-query
+*.alipayobjects.com = server:https://223.5.5.5/dns-query
+taobao.com = server:https://223.5.5.5/dns-query
+*.taobao.com = server:https://223.5.5.5/dns-query
+tmall.com = server:https://223.5.5.5/dns-query
+*.tmall.com = server:https://223.5.5.5/dns-query
+1688.com = server:https://223.5.5.5/dns-query
+*.1688.com = server:https://223.5.5.5/dns-query
+ele.me = server:https://223.5.5.5/dns-query
+*.ele.me = server:https://223.5.5.5/dns-query
+amap.com = server:https://223.5.5.5/dns-query
+*.amap.com = server:https://223.5.5.5/dns-query
+autonavi.com = server:https://223.5.5.5/dns-query
+*.autonavi.com = server:https://223.5.5.5/dns-query
+gaode.com = server:https://223.5.5.5/dns-query
+*.gaode.com = server:https://223.5.5.5/dns-query
+cainiao.com = server:https://223.5.5.5/dns-query
+*.cainiao.com = server:https://223.5.5.5/dns-query
+yuque.com = server:https://223.5.5.5/dns-query
+*.yuque.com = server:https://223.5.5.5/dns-query
+dingtalk.com = server:https://223.5.5.5/dns-query
+*.dingtalk.com = server:https://223.5.5.5/dns-query
+dingding.xin = server:https://223.5.5.5/dns-query
+*.dingding.xin = server:https://223.5.5.5/dns-query
+bytedance.com = server:https://223.5.5.5/dns-query
+*.bytedance.com = server:https://223.5.5.5/dns-query
+bytedance.net = server:https://223.5.5.5/dns-query
+*.bytedance.net = server:https://223.5.5.5/dns-query
+byteimg.com = server:https://223.5.5.5/dns-query
+*.byteimg.com = server:https://223.5.5.5/dns-query
+bytedns.net = server:https://223.5.5.5/dns-query
+*.bytedns.net = server:https://223.5.5.5/dns-query
+bytednsdoc.com = server:https://223.5.5.5/dns-query
+*.bytednsdoc.com = server:https://223.5.5.5/dns-query
+douyin.com = server:https://223.5.5.5/dns-query
+*.douyin.com = server:https://223.5.5.5/dns-query
+douyincdn.com = server:https://223.5.5.5/dns-query
+*.douyincdn.com = server:https://223.5.5.5/dns-query
+douyinpic.com = server:https://223.5.5.5/dns-query
+*.douyinpic.com = server:https://223.5.5.5/dns-query
+douyinvod.com = server:https://223.5.5.5/dns-query
+*.douyinvod.com = server:https://223.5.5.5/dns-query
+iesdouyin.com = server:https://223.5.5.5/dns-query
+*.iesdouyin.com = server:https://223.5.5.5/dns-query
+amemv.com = server:https://223.5.5.5/dns-query
+*.amemv.com = server:https://223.5.5.5/dns-query
+snssdk.com = server:https://223.5.5.5/dns-query
+*.snssdk.com = server:https://223.5.5.5/dns-query
+pstatp.com = server:https://223.5.5.5/dns-query
+*.pstatp.com = server:https://223.5.5.5/dns-query
+toutiao.com = server:https://223.5.5.5/dns-query
+*.toutiao.com = server:https://223.5.5.5/dns-query
+toutiaoimg.com = server:https://223.5.5.5/dns-query
+*.toutiaoimg.com = server:https://223.5.5.5/dns-query
+ixigua.com = server:https://223.5.5.5/dns-query
+*.ixigua.com = server:https://223.5.5.5/dns-query
+ixiguavideo.com = server:https://223.5.5.5/dns-query
+*.ixiguavideo.com = server:https://223.5.5.5/dns-query
+feishucdn.com = server:https://223.5.5.5/dns-query
+*.feishucdn.com = server:https://223.5.5.5/dns-query
+volcengine.com = server:https://223.5.5.5/dns-query
+*.volcengine.com = server:https://223.5.5.5/dns-query
+volccdn.com = server:https://223.5.5.5/dns-query
+*.volccdn.com = server:https://223.5.5.5/dns-query
+volces.com = server:https://223.5.5.5/dns-query
+*.volces.com = server:https://223.5.5.5/dns-query
+163.com = server:https://223.5.5.5/dns-query
+*.163.com = server:https://223.5.5.5/dns-query
+126.com = server:https://223.5.5.5/dns-query
+*.126.com = server:https://223.5.5.5/dns-query
+netease.com = server:https://223.5.5.5/dns-query
+*.netease.com = server:https://223.5.5.5/dns-query
+netease.im = server:https://223.5.5.5/dns-query
+*.netease.im = server:https://223.5.5.5/dns-query
+126.net = server:https://223.5.5.5/dns-query
+*.126.net = server:https://223.5.5.5/dns-query
+127.net = server:https://223.5.5.5/dns-query
+*.127.net = server:https://223.5.5.5/dns-query
+lofter.com = server:https://223.5.5.5/dns-query
+*.lofter.com = server:https://223.5.5.5/dns-query
+ydstatic.com = server:https://223.5.5.5/dns-query
+*.ydstatic.com = server:https://223.5.5.5/dns-query
+youdao.com = server:https://223.5.5.5/dns-query
+*.youdao.com = server:https://223.5.5.5/dns-query
+jd.com = server:https://223.5.5.5/dns-query
+*.jd.com = server:https://223.5.5.5/dns-query
+360buy.com = server:https://223.5.5.5/dns-query
+*.360buy.com = server:https://223.5.5.5/dns-query
+360buyimg.com = server:https://223.5.5.5/dns-query
+*.360buyimg.com = server:https://223.5.5.5/dns-query
+jcloudcs.com = server:https://223.5.5.5/dns-query
+*.jcloudcs.com = server:https://223.5.5.5/dns-query
+jdcloud.com = server:https://223.5.5.5/dns-query
+*.jdcloud.com = server:https://223.5.5.5/dns-query
+xiaohongshu.com = server:https://223.5.5.5/dns-query
+*.xiaohongshu.com = server:https://223.5.5.5/dns-query
+xhscdn.com = server:https://223.5.5.5/dns-query
+*.xhscdn.com = server:https://223.5.5.5/dns-query
+xhslink.com = server:https://223.5.5.5/dns-query
+*.xhslink.com = server:https://223.5.5.5/dns-query
+kuaishou.com = server:https://223.5.5.5/dns-query
+*.kuaishou.com = server:https://223.5.5.5/dns-query
+gifshow.com = server:https://223.5.5.5/dns-query
+*.gifshow.com = server:https://223.5.5.5/dns-query
+ksapisrv.com = server:https://223.5.5.5/dns-query
+*.ksapisrv.com = server:https://223.5.5.5/dns-query
+kwaicdn.com = server:https://223.5.5.5/dns-query
+*.kwaicdn.com = server:https://223.5.5.5/dns-query
+kwimgs.com = server:https://223.5.5.5/dns-query
+*.kwimgs.com = server:https://223.5.5.5/dns-query
+zhihu.com = server:https://223.5.5.5/dns-query
+*.zhihu.com = server:https://223.5.5.5/dns-query
+zhimg.com = server:https://223.5.5.5/dns-query
+*.zhimg.com = server:https://223.5.5.5/dns-query
+weibo.com = server:https://223.5.5.5/dns-query
+*.weibo.com = server:https://223.5.5.5/dns-query
+sina.com = server:https://223.5.5.5/dns-query
+*.sina.com = server:https://223.5.5.5/dns-query
+wps.com = server:https://223.5.5.5/dns-query
+*.wps.com = server:https://223.5.5.5/dns-query
+wpscdn.com = server:https://223.5.5.5/dns-query
+*.wpscdn.com = server:https://223.5.5.5/dns-query
+ksyun.com = server:https://223.5.5.5/dns-query
+*.ksyun.com = server:https://223.5.5.5/dns-query
+kingsoft.com = server:https://223.5.5.5/dns-query
+*.kingsoft.com = server:https://223.5.5.5/dns-query
+huawei.com = server:https://223.5.5.5/dns-query
+*.huawei.com = server:https://223.5.5.5/dns-query
+mi.com = server:https://223.5.5.5/dns-query
+*.mi.com = server:https://223.5.5.5/dns-query
+xiaomi.com = server:https://223.5.5.5/dns-query
+*.xiaomi.com = server:https://223.5.5.5/dns-query
+mi-img.com = server:https://223.5.5.5/dns-query
+*.mi-img.com = server:https://223.5.5.5/dns-query
+micloud.com = server:https://223.5.5.5/dns-query
+*.micloud.com = server:https://223.5.5.5/dns-query
+oppo.com = server:https://223.5.5.5/dns-query
+*.oppo.com = server:https://223.5.5.5/dns-query
+vivo.com = server:https://223.5.5.5/dns-query
+*.vivo.com = server:https://223.5.5.5/dns-query
+meituan.com = server:https://223.5.5.5/dns-query
+*.meituan.com = server:https://223.5.5.5/dns-query
+meituan.net = server:https://223.5.5.5/dns-query
+*.meituan.net = server:https://223.5.5.5/dns-query
+dianping.com = server:https://223.5.5.5/dns-query
+*.dianping.com = server:https://223.5.5.5/dns-query
+dpfile.com = server:https://223.5.5.5/dns-query
+*.dpfile.com = server:https://223.5.5.5/dns-query
+ctrip.com = server:https://223.5.5.5/dns-query
+*.ctrip.com = server:https://223.5.5.5/dns-query
+tripcdn.com = server:https://223.5.5.5/dns-query
+*.tripcdn.com = server:https://223.5.5.5/dns-query
+qunar.com = server:https://223.5.5.5/dns-query
+*.qunar.com = server:https://223.5.5.5/dns-query
+qunarzz.com = server:https://223.5.5.5/dns-query
+*.qunarzz.com = server:https://223.5.5.5/dns-query
+sf-express.com = server:https://223.5.5.5/dns-query
+*.sf-express.com = server:https://223.5.5.5/dns-query
+zto.com = server:https://223.5.5.5/dns-query
+*.zto.com = server:https://223.5.5.5/dns-query
+ccb.com = server:https://223.5.5.5/dns-query
+*.ccb.com = server:https://223.5.5.5/dns-query
+abchina.com = server:https://223.5.5.5/dns-query
+*.abchina.com = server:https://223.5.5.5/dns-query
+cmbchina.com = server:https://223.5.5.5/dns-query
+*.cmbchina.com = server:https://223.5.5.5/dns-query
