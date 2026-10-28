@@ -1,5 +1,7 @@
 # Loon for Mac DNS 防泄漏
 
+本仓库另有三个独立的 [Mac 去广告插件](plugins/README.md)：[HTTPDNS 拦截器](plugins/Loon-Mac-HTTPDNS-Block.plugin)、[广告平台拦截器](plugins/Loon-Mac-Ad-Platforms-Block.plugin)、[应用与网页广告过滤器](plugins/Loon-Mac-Ad-Filter.plugin)。各自的导入地址与适配说明见该目录。
+
 面向 **Loon for Mac 0.5.0（Build 1009）** 编写的 DNS 防护插件，使用加密 DNS、明确的 DNS 出口和常见 DNS 端口阻断，减少运营商明文 DNS 与应用自带 DNS 绕行的风险。实际导入与运行效果由使用者测试确认。
 
 **插件必须配合下面的 DNS 设置使用。导入成功不等于已经防止所有 DNS 泄漏。**
@@ -80,3 +82,6 @@
 - [Cloudflare：DoH 请求格式](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/)
 
 原创文件按 [MIT License](LICENSE) 发布；本仓库许可证不适用于其他作者的插件。
+
+
+新增 `plugins/` 中的三个去广告插件按各自的 GPL 许可单独发行；根目录 DNS 文件的 MIT 许可不覆盖这些派生规则。详见 [署名与许可](plugins/NOTICE.md)。

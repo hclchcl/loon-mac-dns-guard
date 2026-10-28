@@ -1,0 +1,145 @@
+#!name = Mac HTTPDNS 拦截器
+#!desc = 阻止清单内 HTTPDNS 域名及常见 HTTP(S) 端口上的硬编码解析 IP，补充明文 HTTP 路径拦截。无需 PROXY 或 MitM；不保证所有应用都会回落系统 DNS。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/httpdns.md
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = macOS,去广告
+#!type = normal
+
+# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# SPDX-License-Identifier: GPL-3.0-only
+# 上游：VirgilClyne/GetSomeFries，详见 sources/manifest.json
+# 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。
+# 这是独立适配项目，不是可莉插件的复制品或官方 Mac 移植。
+# 不含脚本、节点凭据、FINAL 或业务直连/代理策略。
+# 本地放行规则、绕过 TUN 的流量及其他插件可能影响命中。
+[Rule]
+# IP 拦截限于 80/443/8080，不把解析服务器的所有端口一并封禁。
+DOMAIN,httpdns.alicdn.com,REJECT
+DOMAIN,httpdns-api.aliyuncs.com,REJECT
+DOMAIN,httpdns-sc.aliyuncs.com,REJECT
+DOMAIN,resolvers-cn.httpdns.aliyuncs.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,203.107.1.0/24,no-resolve)),REJECT
+DOMAIN,httpsdns.baidu.com,REJECT
+DOMAIN,httpdns.baidu.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,180.76.76.112/32,no-resolve)),REJECT
+DOMAIN,httpdns.baidubce.com,REJECT
+DOMAIN,httpdns.bcelive.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,180.76.76.200/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,180.76.76.220/32,no-resolve)),REJECT
+DOMAIN,httpdns.bilivideo.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,47.101.175.206/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,47.100.123.169/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,120.46.169.234/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,121.36.72.124/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,116.63.10.135/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,122.9.7.134/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,117.185.228.108/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,117.144.238.29/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,122.9.13.79/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,122.9.15.129/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,101.91.140.224/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,101.91.140.124/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,114.116.215.110/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,116.63.10.31/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,112.64.218.119/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,112.65.200.117/32,no-resolve)),REJECT
+DOMAIN,httpdns.c.cdnhwc2.com,REJECT
+DOMAIN,doh.iqiyi.com,REJECT
+DOMAIN,dns.jd.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,101.124.19.122/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR6,2402:db40:5100:1011::5/128,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,103.224.222.208/32,no-resolve)),REJECT
+DOMAIN,httpdns.kg.qq.com,REJECT
+DOMAIN,httpdns.calorietech.com,REJECT
+DOMAIN,httpdns.meituan.com,REJECT
+DOMAIN,httpdnsvip.meituan.com,REJECT
+DOMAIN,httpdnsmultiapi.meituan.com,REJECT
+DOMAIN,httpdnsmultiapivip.meituan.com,REJECT
+DOMAIN,dnspod.meituan.httpdns.qcloud.com,REJECT
+DOMAIN,dnspod.meituan.httpdns.start.qcloud.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,202.90.108.13/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,202.90.110.46/32,no-resolve)),REJECT
+DOMAIN,httpdns.immomo.com,REJECT
+DOMAIN,httpdns.yunxinfw.com,REJECT
+DOMAIN,httpdns.yunxindns.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+DOMAIN,httpdns-sdk.n.netease.com,REJECT
+DOMAIN,httpdns.music.163.com,REJECT
+DOMAIN,music.httpdns.c.163.com,REJECT
+DOMAIN,lofter.httpdns.c.163.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,59.111.239.61/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,59.111.239.62/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,115.236.121.51/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,115.236.121.195/32,no-resolve)),REJECT
+DOMAIN,httpdns.ocloud.oppomobile.com,REJECT
+DOMAIN,httpdns.push.oppomobile.com,REJECT
+DOMAIN-SUFFIX,httpdns.pro,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,119.29.29.98/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,119.29.29.99/32,no-resolve)),REJECT
+DOMAIN,httpdns.volcengineapi.com,REJECT
+DOMAIN,dns.weibo.cn,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,39.97.128.148/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,39.97.130.51/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,182.254.116.117/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,182.254.118.119/32,no-resolve)),REJECT
+DOMAIN,aedns.weixin.qq.com,REJECT
+DOMAIN,dns.weixin.qq.com,REJECT
+DOMAIN,dns.weixin.qq.com.cn,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,42.81.232.18/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,42.187.182.106/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,42.187.182.123/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,42.187.184.154/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,123.151.54.50/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR6,2402:4e00:1900:1700:0:9554:1ad9:c3a/128,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR6,240e:928:1400:10::25/128,no-resolve)),REJECT
+DOMAIN,yuyin-httpdns.gslb.yy.com,REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR,118.89.204.198/32,no-resolve)),REJECT
+AND,((OR,((DEST-PORT,80),(DEST-PORT,443),(DEST-PORT,8080))),(IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,no-resolve)),REJECT
+
+[Rewrite]
+# 本段只处理明文 HTTP，不申请 HTTPS 解密。
+request if ${url} ~= /^http:\/\/110\.76\.8\.150\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.230\.39\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.245\.102\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.245\.158\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.247\.95\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.250\.41\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.250\.114\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/203\.209\.251\.147\/squery(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/180\.76\.76\.112\/v4\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/180\.76\.76\.220\/v4\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/47\.101\.175\.206\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/47\.100\.123\.169\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/120\.46\.169\.234\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/121\.36\.72\.124\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/116\.63\.10\.135\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/122\.9\.7\.134\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/117\.185\.228\.108\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/117\.144\.238\.29\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/122\.9\.13\.79\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/122\.9\.15\.129\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/101\.91\.140\.224\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/101\.91\.140\.124\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/114\.116\.215\.110\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/116\.63\.10\.31\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/112\.64\.218\.119\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/112\.65\.200\.117\/resolve(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/.+\.zijieapi\.com\/get_domains\// then reject(503)
+request if ${url} ~= /^http:\/\/103\.37\.155\.60\/fetch(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/101\.35\.204\.35\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/101\.35\.212\.35\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/114\.110\.96\.26\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/114\.110\.97\.97\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/119\.29\.29\.29\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/api\.weibo\.cn\/2\/httpdns\/config(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/api\.weibo\.cn\/httpdns\/config(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/dns\.weixin\.qq\.com\/cgi-bin\/micromsg-bin\/newgetdns(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/dns\.weixin\.qq\.com\.cn\/cgi-bin\/micromsg-bin\/newgetdns(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/short\.weixin\.qq\.com\/cgi-bin\/micromsg-bin\/getcdndns(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/hkextshort\.weixin\.qq\.com\/cgi-bin\/micromsg-bin\/getcdndns(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/182\.254\.116\.117\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/182\.254\.118\.119\/d(?:[\/?]|$)/ then reject(503)
+request if ${url} ~= /^http:\/\/103\.41\.167\.237\/v2\/resolv(?:[\/?]|$)/ then reject(503)

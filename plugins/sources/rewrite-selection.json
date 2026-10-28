@@ -1,0 +1,156 @@
+[
+  {
+    "service": "百度网盘",
+    "source_line": "^https?:\\/\\/pan\\.baidu\\.com\\/rest\\/2\\.0\\/pcs\\/ad - reject",
+    "modified_regex": "^https?:\\/\\/pan\\.baidu\\.com\\/rest\\/[0-9]+\\.[0-9]+\\/pcs\\/adx?(?:[/?]|$)",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "pan.baidu.com"
+    ]
+  },
+  {
+    "service": "网易云音乐",
+    "source_line": "^https?:\\/\\/interface(\\d)?\\.music\\.163\\.com\\/eapi\\/(ad|abtest|sp|hot|store|search\\/(specialkeyword|defaultkeyword|hot)) - reject",
+    "modified_regex": "^https?:\\/\\/interface[0-9]?\\.music\\.163\\.com\\/(?:eapi|weapi|api)\\/ad(?:[/?]|$)",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "interface.music.163.com",
+      "interface0.music.163.com",
+      "interface1.music.163.com",
+      "interface2.music.163.com",
+      "interface3.music.163.com",
+      "interface4.music.163.com",
+      "interface5.music.163.com",
+      "interface6.music.163.com",
+      "interface7.music.163.com",
+      "interface8.music.163.com",
+      "interface9.music.163.com"
+    ]
+  },
+  {
+    "service": "网易邮箱",
+    "source_line": "^https?:\\/\\/appconf\\.mail\\.163\\.com\\/mmad\\/ - reject-200",
+    "modified_regex": "^https?:\\/\\/appconf\\.mail\\.163\\.com\\/mmad\\/",
+    "action": "reject(200)",
+    "mitm_hosts": [
+      "appconf.mail.163.com"
+    ]
+  },
+  {
+    "service": "网易邮箱",
+    "source_line": "^https?:\\/\\/client\\.mail\\.163\\.com\\/apptrack\\/confinfo\\/searchMultiAds - reject",
+    "modified_regex": "^https?:\\/\\/client\\.mail\\.163\\.com\\/apptrack\\/confinfo\\/searchMultiAds(?:[/?]|$)",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "client.mail.163.com"
+    ]
+  },
+  {
+    "service": "迅雷",
+    "source_line": "^https?:\\/\\/api-shoulei-ssl\\.xunlei\\.com\\/flowhub\\/v\\d\\/slots:batchGet - reject-200",
+    "modified_regex": "^https?:\\/\\/api-shoulei-ssl\\.xunlei\\.com\\/flowhub\\/v[0-9]+\\/slots:batchGet(?:[/?]|$)",
+    "action": "reject(200)",
+    "mitm_hosts": [
+      "api-shoulei-ssl.xunlei.com"
+    ]
+  },
+  {
+    "service": "迅雷",
+    "source_line": "^https?:\\/\\/images\\.client\\.vip\\.xunlei\\.com\\/.+?\\/advert\\/ - reject-200",
+    "modified_regex": "^https?:\\/\\/images\\.client\\.vip\\.xunlei\\.com\\/.+?\\/advert\\/",
+    "action": "reject(200)",
+    "mitm_hosts": [
+      "images.client.vip.xunlei.com"
+    ]
+  },
+  {
+    "service": "天翼云盘",
+    "source_line": "^https?:\\/\\/cloud\\.189\\.cn\\/include\\/splash\\/ - reject",
+    "modified_regex": "^https?:\\/\\/cloud\\.189\\.cn\\/include\\/splash\\/",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "cloud.189.cn"
+    ]
+  },
+  {
+    "service": "天翼云盘",
+    "source_line": "^https?:\\/\\/api\\.cloud\\.189\\.cn\\/guns\\/getOpenscreenBanners - reject-200",
+    "modified_regex": "^https?:\\/\\/api\\.cloud\\.189\\.cn\\/guns\\/getOpenscreenBanners(?:[/?]|$)",
+    "action": "reject(200)",
+    "mitm_hosts": [
+      "api.cloud.189.cn"
+    ]
+  },
+  {
+    "service": "有道词典",
+    "source_line": "^https?:\\/\\/dictvip-business\\.youdao\\.com\\/home\\/ad - reject-dict",
+    "modified_regex": "^https?:\\/\\/dictvip-business\\.youdao\\.com\\/home\\/ad(?:[/?]|$)",
+    "action": "reject_dict(200)",
+    "mitm_hosts": [
+      "dictvip-business.youdao.com"
+    ]
+  },
+  {
+    "service": "有道词典",
+    "source_line": "^https?:\\/\\/dsp-impr2\\.youdao\\.com\\/adload - reject-200",
+    "modified_regex": "^https?:\\/\\/dsp-impr2\\.youdao\\.com\\/adload(?:[/?]|$)",
+    "action": "reject(200)",
+    "mitm_hosts": [
+      "dsp-impr2.youdao.com"
+    ]
+  },
+  {
+    "service": "有道词典",
+    "source_line": "^https?:\\/\\/impservice\\.dictapp\\.youdao\\.com\\/imp\\/request - reject-img",
+    "modified_regex": "^https?:\\/\\/impservice\\.dictapp\\.youdao\\.com\\/imp\\/request(?:[/?]|$)",
+    "action": "reject_img(200)",
+    "mitm_hosts": [
+      "impservice.dictapp.youdao.com"
+    ]
+  },
+  {
+    "service": "Inoreader",
+    "source_line": "^https?:\\/\\/www\\.inoreader\\.com\\/adv\\/ - reject",
+    "modified_regex": "^https?:\\/\\/www\\.inoreader\\.com\\/adv\\/",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "www.inoreader.com"
+    ]
+  },
+  {
+    "service": "豆瓣",
+    "source_line": "^https?:\\/\\/erebor\\.douban\\.com\\/count\\/\\?ad= - reject",
+    "modified_regex": "^https?:\\/\\/erebor\\.douban\\.com\\/count\\/\\?ad=",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "erebor.douban.com"
+    ]
+  },
+  {
+    "service": "豆瓣",
+    "source_line": "^https?:\\/\\/img\\d\\.doubanio\\.com\\/view\\/dale-online\\/dale_ad\\/ - reject",
+    "modified_regex": "^https?:\\/\\/img[0-9]\\.doubanio\\.com\\/view\\/dale-online\\/dale_ad\\/",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "img0.doubanio.com",
+      "img1.doubanio.com",
+      "img2.doubanio.com",
+      "img3.doubanio.com",
+      "img4.doubanio.com",
+      "img5.doubanio.com",
+      "img6.doubanio.com",
+      "img7.doubanio.com",
+      "img8.doubanio.com",
+      "img9.doubanio.com"
+    ]
+  },
+  {
+    "service": "虎扑",
+    "source_line": "^https?:\\/\\/goblin\\.hupu\\.com\\/.+\\/interfaceAd\\/getOther - reject",
+    "modified_regex": "^https?:\\/\\/goblin\\.hupu\\.com\\/.+\\/interfaceAd\\/getOther(?:[/?]|$)",
+    "action": "reject(503)",
+    "mitm_hosts": [
+      "goblin.hupu.com"
+    ]
+  }
+]

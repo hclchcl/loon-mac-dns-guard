@@ -1,0 +1,72 @@
+{
+  "release": "1.0.0",
+  "date": "2026-10-28",
+  "target": "Loon for Mac 0.5.0 (1009)",
+  "runtime_tested": false,
+  "original_keli_code_copied": false,
+  "sources": [
+    {
+      "repository": "VirgilClyne/GetSomeFries",
+      "commit": "b4aa767bcbc4d39bea5b549a3277a00517891d1e",
+      "path": "sgmodule/HTTPDNS.Block.sgmodule",
+      "git_blob_sha": "1fe7e056fe4f3db500823de44e9d1edd66f74b93",
+      "license": "GPL-3.0-only",
+      "url": "https://github.com/VirgilClyne/GetSomeFries/blob/b4aa767bcbc4d39bea5b549a3277a00517891d1e/sgmodule/HTTPDNS.Block.sgmodule"
+    },
+    {
+      "repository": "blackmatrix7/ios_rule_script",
+      "commit": "0b6897dc17e0c513d25449c935a9694818e32f0c",
+      "path": "rule/Loon/AdvertisingLite/AdvertisingLite_Domain.list",
+      "git_blob_sha": "56c69d91d7ff19e491e2b3519caeaa0b3fa4430b",
+      "license": "GPL-2.0-only",
+      "upstream_updated": "2025-12-08",
+      "url": "https://github.com/blackmatrix7/ios_rule_script/blob/0b6897dc17e0c513d25449c935a9694818e32f0c/rule/Loon/AdvertisingLite/AdvertisingLite_Domain.list"
+    },
+    {
+      "repository": "blackmatrix7/ios_rule_script",
+      "commit": "0b6897dc17e0c513d25449c935a9694818e32f0c",
+      "path": "rule/Loon/AdvertisingLite/AdvertisingLite.list",
+      "git_blob_sha": "63dfd6ba1c2a4b248bd16f98d6b7df37c0d9a909",
+      "license": "GPL-2.0-only",
+      "upstream_updated": "2025-12-08",
+      "url": "https://github.com/blackmatrix7/ios_rule_script/blob/0b6897dc17e0c513d25449c935a9694818e32f0c/rule/Loon/AdvertisingLite/AdvertisingLite.list"
+    },
+    {
+      "repository": "blackmatrix7/ios_rule_script",
+      "commit": "0b6897dc17e0c513d25449c935a9694818e32f0c",
+      "path": "rewrite/Loon/AdvertisingLite/AdvertisingLite.plugin",
+      "git_blob_sha": "6cccdfec06b3532cdcda632be2ec33e300bf9331",
+      "license": "GPL-2.0-only",
+      "upstream_updated": "2025-07-12",
+      "url": "https://github.com/blackmatrix7/ios_rule_script/blob/0b6897dc17e0c513d25449c935a9694818e32f0c/rewrite/Loon/AdvertisingLite/AdvertisingLite.plugin"
+    }
+  ],
+  "counts": {
+    "httpdns": {
+      "rules": 81,
+      "http_rewrites": 42
+    },
+    "ad_platforms": {
+      "rules": 77
+    },
+    "ad_filter": {
+      "rules": 20,
+      "rewrites": 15,
+      "mitm_hosts": 34
+    }
+  },
+  "outputs": {
+    "Loon-Mac-Ad-Filter.plugin": {
+      "sha256": "a71584f8c186cf899ab829d04fb0927e3b25c53ce50a4bec1f1abfc27ac6b090",
+      "bytes": 4503
+    },
+    "Loon-Mac-Ad-Platforms-Block.plugin": {
+      "sha256": "58a6a8c360c93340c8e114ba4020528b3b3abe0b7cd34e41216f8dc051742b04",
+      "bytes": 3690
+    },
+    "Loon-Mac-HTTPDNS-Block.plugin": {
+      "sha256": "cd7d67fc96028871609578f4cc08b91ef7cb44f8992e19fa5000fcc90d27fe45",
+      "bytes": 10984
+    }
+  }
+}

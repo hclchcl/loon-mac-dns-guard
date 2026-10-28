@@ -1,0 +1,75 @@
+#!name = Mac 应用与网页广告过滤器
+#!desc = 拦截常用服务的专用广告域名，并对百度网盘、网易、迅雷、天翼云盘、有道、豆瓣、虎扑及 Inoreader 的已列广告路径做原生复写。HTTPS 路径需启用 MitM 并信任证书；效果待实测，不含完整 iOS 净化逻辑。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/ad-filter.md
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = macOS,去广告
+#!type = normal
+
+# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# SPDX-License-Identifier: GPL-2.0-only
+# 上游：blackmatrix7/ios_rule_script，详见 sources/manifest.json
+# 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。
+# 这是独立适配项目，不是可莉插件的复制品或官方 Mac 移植。
+# 不含脚本、节点凭据、FINAL 或业务直连/代理策略。
+# 本地放行规则、绕过 TUN 的流量及其他插件可能影响命中。
+[Rule]
+# 专用广告域名规则不需要 MitM；平台公共广告域名交给第二个插件。
+DOMAIN-SUFFIX,ad.api.3g.youku.com,REJECT
+DOMAIN-SUFFIX,ad.api.mobile.youku.com,REJECT
+DOMAIN-SUFFIX,ad.docer.wps.cn,REJECT
+DOMAIN-SUFFIX,ad.doubanio.com,REJECT
+DOMAIN-SUFFIX,ad.m.iqiyi.com,REJECT
+DOMAIN-SUFFIX,ad.mobile.youku.com,REJECT
+DOMAIN-SUFFIX,ad.player.baidu.com,REJECT
+DOMAIN-SUFFIX,ad.qun.qq.com,REJECT
+DOMAIN-SUFFIX,ad.weibo.com,REJECT
+DOMAIN-SUFFIX,ads.service.kugou.com,REJECT
+DOMAIN-SUFFIX,adx-core.youku.com,REJECT
+DOMAIN-SUFFIX,adx-open-service.youku.com,REJECT
+DOMAIN-SUFFIX,cm.ad.bilibili.com,REJECT
+DOMAIN-SUFFIX,cm.adcommon.bilibili.com,REJECT
+DOMAIN-SUFFIX,docerad.wps.cn,REJECT
+DOMAIN-SUFFIX,img.auction-ads.wpscdn.cn,REJECT
+DOMAIN-SUFFIX,pg-ad-b1.nosdn.127.net,REJECT
+DOMAIN,pg-ad-b1.ws.126.net,REJECT
+DOMAIN,pg-ad-b2.ws.126.net,REJECT
+DOMAIN,yk-ssp.ad.youku.com,REJECT
+
+[Rewrite]
+# HTTPS 路径仅在对应连接成功完成 MitM 后可见。
+# 百度网盘
+request if ${url} ~= /^https?:\/\/pan\.baidu\.com\/rest\/[0-9]+\.[0-9]+\/pcs\/adx?(?:[\/?]|$)/ then reject(503)
+# 网易云音乐
+request if ${url} ~= /^https?:\/\/interface[0-9]?\.music\.163\.com\/(?:eapi|weapi|api)\/ad(?:[\/?]|$)/ then reject(503)
+# 网易邮箱
+request if ${url} ~= /^https?:\/\/appconf\.mail\.163\.com\/mmad\// then reject(200)
+# 网易邮箱
+request if ${url} ~= /^https?:\/\/client\.mail\.163\.com\/apptrack\/confinfo\/searchMultiAds(?:[\/?]|$)/ then reject(503)
+# 迅雷
+request if ${url} ~= /^https?:\/\/api-shoulei-ssl\.xunlei\.com\/flowhub\/v[0-9]+\/slots:batchGet(?:[\/?]|$)/ then reject(200)
+# 迅雷
+request if ${url} ~= /^https?:\/\/images\.client\.vip\.xunlei\.com\/.+?\/advert\// then reject(200)
+# 天翼云盘
+request if ${url} ~= /^https?:\/\/cloud\.189\.cn\/include\/splash\// then reject(503)
+# 天翼云盘
+request if ${url} ~= /^https?:\/\/api\.cloud\.189\.cn\/guns\/getOpenscreenBanners(?:[\/?]|$)/ then reject(200)
+# 有道词典
+request if ${url} ~= /^https?:\/\/dictvip-business\.youdao\.com\/home\/ad(?:[\/?]|$)/ then reject_dict(200)
+# 有道词典
+request if ${url} ~= /^https?:\/\/dsp-impr2\.youdao\.com\/adload(?:[\/?]|$)/ then reject(200)
+# 有道词典
+request if ${url} ~= /^https?:\/\/impservice\.dictapp\.youdao\.com\/imp\/request(?:[\/?]|$)/ then reject_img(200)
+# Inoreader
+request if ${url} ~= /^https?:\/\/www\.inoreader\.com\/adv\// then reject(503)
+# 豆瓣
+request if ${url} ~= /^https?:\/\/erebor\.douban\.com\/count\/\?ad=/ then reject(503)
+# 豆瓣
+request if ${url} ~= /^https?:\/\/img[0-9]\.doubanio\.com\/view\/dale-online\/dale_ad\// then reject(503)
+# 虎扑
+request if ${url} ~= /^https?:\/\/goblin\.hupu\.com\/.+\/interfaceAd\/getOther(?:[\/?]|$)/ then reject(503)
+
+[Mitm]
+hostname = pan.baidu.com,interface.music.163.com,interface0.music.163.com,interface1.music.163.com,interface2.music.163.com,interface3.music.163.com,interface4.music.163.com,interface5.music.163.com,interface6.music.163.com,interface7.music.163.com,interface8.music.163.com,interface9.music.163.com,appconf.mail.163.com,client.mail.163.com,api-shoulei-ssl.xunlei.com,images.client.vip.xunlei.com,cloud.189.cn,api.cloud.189.cn,dictvip-business.youdao.com,dsp-impr2.youdao.com,impservice.dictapp.youdao.com,www.inoreader.com,erebor.douban.com,img0.doubanio.com,img1.doubanio.com,img2.doubanio.com,img3.doubanio.com,img4.doubanio.com,img5.doubanio.com,img6.doubanio.com,img7.doubanio.com,img8.doubanio.com,img9.doubanio.com,goblin.hupu.com

@@ -1,0 +1,22 @@
+# Selected from blackmatrix7/ios_rule_script AdvertisingLite.list
+# Commit: 0b6897dc17e0c513d25449c935a9694818e32f0c
+# SPDX-License-Identifier: GPL-2.0-only
+# Changed by hclchcl on 2026-10-28: retained named advertising-platform keywords only.
+DOMAIN-KEYWORD,adform
+DOMAIN-KEYWORD,admarvel
+DOMAIN-KEYWORD,admaster
+DOMAIN-KEYWORD,adsage
+DOMAIN-KEYWORD,adsensor
+DOMAIN-KEYWORD,adsmogo
+DOMAIN-KEYWORD,applovin
+DOMAIN-KEYWORD,appsflyer
+DOMAIN-KEYWORD,domob
+DOMAIN-KEYWORD,dtscout
+DOMAIN-KEYWORD,duomeng
+DOMAIN-KEYWORD,exosrv
+DOMAIN-KEYWORD,mathtag
+DOMAIN-KEYWORD,openx
+DOMAIN-KEYWORD,pangolin-sdk-toutiao
+DOMAIN-KEYWORD,pglstatp-toutiao
+DOMAIN-KEYWORD,socdm
+DOMAIN-KEYWORD,supersonicads

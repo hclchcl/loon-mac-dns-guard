@@ -1,0 +1,96 @@
+#!name = Mac 广告平台拦截器
+#!desc = 拦截清单内广告投放、广告资源与归因平台，使用域名规则，适用于进入 Loon 的 Mac 应用和浏览器。无需证书、脚本或 PROXY；不保证删除同域信息流广告。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/ad-platforms.md
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = macOS,去广告
+#!type = normal
+
+# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# SPDX-License-Identifier: GPL-2.0-only
+# 上游：blackmatrix7/ios_rule_script，详见 sources/manifest.json
+# 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。
+# 这是独立适配项目，不是可莉插件的复制品或官方 Mac 移植。
+# 不含脚本、节点凭据、FINAL 或业务直连/代理策略。
+# 本地放行规则、绕过 TUN 的流量及其他插件可能影响命中。
+[Rule]
+# 只选择广告平台条目；不封禁 snssdk.com、qq.com 或 baidu.com 整个业务主域。
+DOMAIN-SUFFIX,acookie.alimama.com,REJECT
+DOMAIN-SUFFIX,ad.intl.xiaomi.com,REJECT
+DOMAIN-SUFFIX,ad.qq.com,REJECT
+DOMAIN-SUFFIX,ad.xiaomi.com,REJECT
+DOMAIN-SUFFIX,adcolony.com,REJECT
+DOMAIN-SUFFIX,adnxs.com,REJECT
+DOMAIN-SUFFIX,ads.union.jd.com,REJECT
+DOMAIN-SUFFIX,adsrvr.org,REJECT
+DOMAIN-SUFFIX,adview.cn,REJECT
+DOMAIN-SUFFIX,adwo.com,REJECT
+DOMAIN-SUFFIX,afpeng.alimama.com,REJECT
+DOMAIN-SUFFIX,afpssp.alimama.com,REJECT
+DOMAIN-SUFFIX,afptrack.alimama.com,REJECT
+DOMAIN-SUFFIX,appier.net,REJECT
+DOMAIN-SUFFIX,applvn.com,REJECT
+DOMAIN-SUFFIX,banner.alimama.com,REJECT
+DOMAIN-SUFFIX,c.alimama.com,REJECT
+DOMAIN-SUFFIX,c.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,canvas.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,casalemedia.com,REJECT
+DOMAIN-SUFFIX,cpc.click.alimama.com,REJECT
+DOMAIN-SUFFIX,cpro.baidu.com,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,criteo.net,REJECT
+DOMAIN-SUFFIX,crs.baidu.com,REJECT
+DOMAIN-SUFFIX,d.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,e.qq.com,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,inmobi.cn,REJECT
+DOMAIN-SUFFIX,inmobi.com,REJECT
+DOMAIN-SUFFIX,jzt.jd.com,REJECT
+DOMAIN-SUFFIX,mi.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,miaozhen.com,REJECT
+DOMAIN-SUFFIX,mobvista.com,REJECT
+DOMAIN-SUFFIX,nc.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,pangle.io,REJECT
+DOMAIN-SUFFIX,pangolin.snssdk.com,REJECT
+DOMAIN-SUFFIX,pos.baidu.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,q.i.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,rm.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,s.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,t.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,tanx.com,REJECT
+DOMAIN-SUFFIX,ubixioe.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+DOMAIN-SUFFIX,v.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,vungle.com,REJECT
+DOMAIN-SUFFIX,win.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,xc.gdt.qq.com,REJECT
+DOMAIN-SUFFIX,youmi.net,REJECT
+DOMAIN,mercury-sdk.snssdk.com,REJECT
+DOMAIN,v2.gdt.qq.com,REJECT
+DOMAIN,vr.gdt.qq.com,REJECT
+DOMAIN,xs.gdt.qq.com,REJECT
+DOMAIN-KEYWORD,adform,REJECT
+DOMAIN-KEYWORD,admarvel,REJECT
+DOMAIN-KEYWORD,admaster,REJECT
+DOMAIN-KEYWORD,adsage,REJECT
+DOMAIN-KEYWORD,adsensor,REJECT
+DOMAIN-KEYWORD,adsmogo,REJECT
+DOMAIN-KEYWORD,applovin,REJECT
+DOMAIN-KEYWORD,appsflyer,REJECT
+DOMAIN-KEYWORD,domob,REJECT
+DOMAIN-KEYWORD,dtscout,REJECT
+DOMAIN-KEYWORD,duomeng,REJECT
+DOMAIN-KEYWORD,exosrv,REJECT
+DOMAIN-KEYWORD,mathtag,REJECT
+DOMAIN-KEYWORD,openx,REJECT
+DOMAIN-KEYWORD,pangolin-sdk-toutiao,REJECT
+DOMAIN-KEYWORD,pglstatp-toutiao,REJECT
+DOMAIN-KEYWORD,socdm,REJECT
+DOMAIN-KEYWORD,supersonicads,REJECT
