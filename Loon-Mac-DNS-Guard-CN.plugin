@@ -1,6 +1,6 @@
 #!name = Mac DNS 防泄漏 · 国内分流版
 #!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
-#!desc = 默认 Cloudflare DoH 经 PROXY；.cn、中文中国域名及清单内常见国内服务改用直连阿里 DoH。业务访问仍遵守原分流。需关闭查询回落、DoH 模式设为 Rule，并按仓库说明配置 DNS 接管及节点引导。与标准版只启用一个。
+#!desc = v1.2.0：国内清单及 Apple、微软、游戏下载的 CN 条目使用直连阿里 DoH；默认 Cloudflare DoH 经 PROXY。检测网站遵循普通分流，不再特殊处理。需关闭查询回落并使用 Rule 模式。与标准版只启用一个。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-dns-guard
 #!system = macOS
@@ -9,60 +9,38 @@
 #!tag = DNS,DoH,隐私,macOS
 #!type = normal
 
-# v1.1.1 | MIT
-# 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
-# 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
-# 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
-# PROXY 必须绑定一个可用的境外代理策略，不能指向 DIRECT 或可直连回退的组。
-# doh-server 仅追加：启用前核对其他来源的加密 DNS，不会自动替换它们。
-# hijack-dns 不受插件 General 支持，请按 docs/main-config.txt 合并到主配置。
+# v1.2.0 | MIT
+# 借鉴 AIsouler/MyClash 的国内、默认及节点引导 DNS 分工；使用 Loon 原生语法独立实现。
+# 生成来源：templates/Loon-Mac-DNS-Guard-CN.plugin + docs/domestic-domains.txt。
+# 不含脚本、MitM、证书、节点凭据、FINAL 或强制业务 DIRECT 规则。
+# PROXY 应绑定可用的境外代理；绑定 DIRECT 时，解析器会看到本地网络出口。
+# 插件 DNS 只能追加；其他全局 DNS、Host 与 SSID 配置仍需单独核对。
+# hijack-dns、查询回落及节点 server-dns 按 docs/main-config.txt 配置。
 
 [General]
 doh-server = https://1.1.1.1/dns-query,https://1.0.0.1/dns-query
 
 [Rule]
-# 固定 IP 的 DoH 端点不需要先做域名解析；保留正常 TLS 证书校验。
+# 固定 IP 的 DoH 端点避免域名引导解析；保留正常 TLS 证书校验。
 AND,((DEST-PORT,443),(IP-CIDR,1.1.1.1/32,no-resolve)),PROXY
 AND,((DEST-PORT,443),(IP-CIDR,1.0.0.1/32,no-resolve)),PROXY
-# 为独立节点引导 DNS 及可选国内分流版保留直连加密路径。
-# 这两条不向全局 DNS 列表添加阿里 DNS。
+# 阿里 DoH 供国内解析及独立节点引导使用，不加入全局并发 DNS 列表。
 AND,((DEST-PORT,443),(IP-CIDR,223.5.5.5/32,no-resolve)),DIRECT
 AND,((DEST-PORT,443),(IP-CIDR,223.6.6.6/32,no-resolve)),DIRECT
 
-# 让检测页面与代理 DNS 使用相同出口；这些规则本身不能证明没有泄漏。
-DOMAIN-SUFFIX,dnsleaktest.com,PROXY
-DOMAIN-SUFFIX,dnsleak.com,PROXY
-DOMAIN-SUFFIX,ipleak.net,PROXY
-DOMAIN-SUFFIX,expressvpn.com,PROXY
-DOMAIN-SUFFIX,nordvpn.com,PROXY
-DOMAIN-SUFFIX,surfshark.com,PROXY
-
-# 仅作用于进入 Loon 且实际命中这些规则的 TCP/UDP 连接。
-# 主配置 UDP DNS 接管若未生效，53 端口可能被拒绝而不是得到透明代答。
-# 853/784 同时阻断常见 DoT/DoQ，也会影响这些端口上的非 DNS 服务。
-# 本地规则优先于插件规则；必须排查已有放行规则。
+# 检测网站与普通网站使用相同的 DNS/业务规则流程，不设置检测专用映射。
+# 仅限制实际进入 Loon 且命中规则的连接；本地规则优先于插件规则。
+# 未被主配置接管的 53 端口可能被拒绝，拒绝不等于透明代答。
+# 853/784 阻断常见 DoT/DoQ，也可能影响这些端口上的其他服务。
 DEST-PORT,53,REJECT
 DEST-PORT,853,REJECT
 DEST-PORT,784,REJECT
 
 [Host]
-# 明确检测域名的解析服务器；根域名与子域名分别声明。
-# 不保证覆盖第三方页面加载的所有外部域名，仍须检查全局 DNS 配置。
-dnsleaktest.com = server:https://1.1.1.1/dns-query
-*.dnsleaktest.com = server:https://1.1.1.1/dns-query
-dnsleak.com = server:https://1.1.1.1/dns-query
-*.dnsleak.com = server:https://1.1.1.1/dns-query
-ipleak.net = server:https://1.1.1.1/dns-query
-*.ipleak.net = server:https://1.1.1.1/dns-query
-expressvpn.com = server:https://1.1.1.1/dns-query
-*.expressvpn.com = server:https://1.1.1.1/dns-query
-nordvpn.com = server:https://1.1.1.1/dns-query
-*.nordvpn.com = server:https://1.1.1.1/dns-query
-surfshark.com = server:https://1.1.1.1/dns-query
-*.surfshark.com = server:https://1.1.1.1/dns-query
-
-# 以下是可选的国内解析分流；不改变业务连接的访问出口。
-# 仅覆盖这些域名；使用一个阿里 DoH 端点（v1.1.1 起为 223.6.6.6），不声明自动故障切换。
+# 保留 v1.1.1 的 223.6.6.6；不把曾故障的端点重新加入国内并发查询。
+# 以下清单只指定解析服务器，网站访问出口仍由原来的业务规则决定。
+# 国内分流版的 DNS 匹配域名；根域名与子域名分别列出
+# 清单不保证覆盖所有国内服务；仅选择 DNS，不添加业务 DIRECT 规则
 *.cn = server:https://223.6.6.6/dns-query
 *.xn--fiqs8s = server:https://223.6.6.6/dns-query
 *.xn--fiqz9s = server:https://223.6.6.6/dns-query
@@ -288,10 +266,6 @@ abchina.com = server:https://223.6.6.6/dns-query
 *.abchina.com = server:https://223.6.6.6/dns-query
 cmbchina.com = server:https://223.6.6.6/dns-query
 *.cmbchina.com = server:https://223.6.6.6/dns-query
-
-# v1.1.0：常用国内服务补充。逐个对照过 Cloudflare 与阿里 DoH 的解析结果和直连耗时，
-# 多数在 Cloudflare 下拿到境外节点而明显变慢；依据见 docs/cdn-optimization.md。
-# 只改变 DNS 查询服务器；业务访问仍遵守原有分流规则。
 pkulaw.com = server:https://223.6.6.6/dns-query
 *.pkulaw.com = server:https://223.6.6.6/dns-query
 cnki.net = server:https://223.6.6.6/dns-query
@@ -375,20 +349,11 @@ alipan.com = server:https://223.6.6.6/dns-query
 unionpay.com = server:https://223.6.6.6/dns-query
 *.unionpay.com = server:https://223.6.6.6/dns-query
 
-# 抖音网页资源：仅补充实际观察并核对过的主机名，避免扩大到共享 CDN 的全部后缀。
-# 这些映射只改变 DNS 查询服务器；业务访问仍遵守原有分流规则。
-lf-c-flwb.bytetos.com = server:https://223.6.6.6/dns-query
-lf3-webcast.bytetos.com = server:https://223.6.6.6/dns-query
-lf-cdn-tos.bytescm.com = server:https://223.6.6.6/dns-query
-lf-security.bytegoofy.com = server:https://223.6.6.6/dns-query
-lf-douyin-pc-web.douyinstatic.com = server:https://223.6.6.6/dns-query
-lf-normal-gr-sourcecdn.bytegecko.com = server:https://223.6.6.6/dns-query
-
 
 # 国内域名补充：v2fly/domain-list-community 的 GEOLOCATION-CN 数据。
 # https://github.com/v2fly/domain-list-community/releases/tag/20261027070632
 # 源数据 SHA-256: 6409bf0d157fc389ca0349a1da76b98d7ac2e569fe4e80a3883290e7381bde0f
-# 仅追加未覆盖的域名，沿用现有阿里 DoH；不更改已有映射、General 或 Rule。
+# 该批数据初次导入时只追加未覆盖域名；本次维护记录见 docs/myclash-optimization.md。
 # 另补充本轮审阅指出的国内法律数据库域名 chinalawinfo.com。
 # MIT License
 #
@@ -12314,3 +12279,393 @@ zzzcaculator.top = server:https://223.6.6.6/dns-query
 *.zzzcaculator.top = server:https://223.6.6.6/dns-query
 zzzmap.com = server:https://223.6.6.6/dns-query
 *.zzzmap.com = server:https://223.6.6.6/dns-query
+
+# v1.2.0：借鉴 MyClash 的 CN 分组，补充 Apple、微软、NVIDIA 与游戏下载。
+# 使用同一 v2fly release 20261027070632；仅提取 @cn 的 Domain/Full，跳过正则。
+# 精确主机不扩大为后缀；域名访问出口仍由原业务规则决定。
+21vbc.com = server:https://223.6.6.6/dns-query
+*.21vbc.com = server:https://223.6.6.6/dns-query
+21vbluecloud.com = server:https://223.6.6.6/dns-query
+*.21vbluecloud.com = server:https://223.6.6.6/dns-query
+21vbluecloud.net = server:https://223.6.6.6/dns-query
+*.21vbluecloud.net = server:https://223.6.6.6/dns-query
+a1.mzstatic.com = server:https://223.6.6.6/dns-query
+a2.mzstatic.com = server:https://223.6.6.6/dns-query
+a3.mzstatic.com = server:https://223.6.6.6/dns-query
+a4.mzstatic.com = server:https://223.6.6.6/dns-query
+a5.mzstatic.com = server:https://223.6.6.6/dns-query
+adcdownload.apple.com = server:https://223.6.6.6/dns-query
+adcdownload.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+aggresmart.com = server:https://223.6.6.6/dns-query
+*.aggresmart.com = server:https://223.6.6.6/dns-query
+alibaba.cdn.steampipe.steamcontent.com = server:https://223.6.6.6/dns-query
+amp-api-edge-lb-cn.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+amp-api-edge-lb.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+amp-api-edge.apps.apple.com = server:https://223.6.6.6/dns-query
+amp-api-edge.music.apple.com = server:https://223.6.6.6/dns-query
+amp-api-search-edge.apps.apple.com = server:https://223.6.6.6/dns-query
+amp-api-updates.apps.apple.com = server:https://223.6.6.6/dns-query
+amp-api.apps.apple.com = server:https://223.6.6.6/dns-query
+amp-api.media.apple.com = server:https://223.6.6.6/dns-query
+amp-api.music.apple.com = server:https://223.6.6.6/dns-query
+amp-api.podcasts.apple.com = server:https://223.6.6.6/dns-query
+aod-ssl.itunes.apple.com = server:https://223.6.6.6/dns-query
+aod.itunes.apple.com = server:https://223.6.6.6/dns-query
+api-edge.apps.apple.com = server:https://223.6.6.6/dns-query
+app-site-association.cdn-apple.com = server:https://223.6.6.6/dns-query
+appldnld.apple.com = server:https://223.6.6.6/dns-query
+appldnld.g.aaplimg.com = server:https://223.6.6.6/dns-query
+appleid.cdn-apple.com = server:https://223.6.6.6/dns-query
+apps.mzstatic.com = server:https://223.6.6.6/dns-query
+apptrailers.itunes.apple.com = server:https://223.6.6.6/dns-query
+azchcdna.com = server:https://223.6.6.6/dns-query
+*.azchcdna.com = server:https://223.6.6.6/dns-query
+azchcdnb.com = server:https://223.6.6.6/dns-query
+*.azchcdnb.com = server:https://223.6.6.6/dns-query
+azchcdnc.com = server:https://223.6.6.6/dns-query
+*.azchcdnc.com = server:https://223.6.6.6/dns-query
+azchcdnd.com = server:https://223.6.6.6/dns-query
+*.azchcdnd.com = server:https://223.6.6.6/dns-query
+azchcdne.com = server:https://223.6.6.6/dns-query
+*.azchcdne.com = server:https://223.6.6.6/dns-query
+azchcdnf.com = server:https://223.6.6.6/dns-query
+*.azchcdnf.com = server:https://223.6.6.6/dns-query
+azchcdng.com = server:https://223.6.6.6/dns-query
+*.azchcdng.com = server:https://223.6.6.6/dns-query
+azchcdnh.com = server:https://223.6.6.6/dns-query
+*.azchcdnh.com = server:https://223.6.6.6/dns-query
+azchcdni.com = server:https://223.6.6.6/dns-query
+*.azchcdni.com = server:https://223.6.6.6/dns-query
+azchcdnj.com = server:https://223.6.6.6/dns-query
+*.azchcdnj.com = server:https://223.6.6.6/dns-query
+azchcdnk.com = server:https://223.6.6.6/dns-query
+*.azchcdnk.com = server:https://223.6.6.6/dns-query
+azchcdnl.com = server:https://223.6.6.6/dns-query
+*.azchcdnl.com = server:https://223.6.6.6/dns-query
+azchcdnm.com = server:https://223.6.6.6/dns-query
+*.azchcdnm.com = server:https://223.6.6.6/dns-query
+azchcdnn.com = server:https://223.6.6.6/dns-query
+*.azchcdnn.com = server:https://223.6.6.6/dns-query
+azchcdno.com = server:https://223.6.6.6/dns-query
+*.azchcdno.com = server:https://223.6.6.6/dns-query
+azchcdnp.com = server:https://223.6.6.6/dns-query
+*.azchcdnp.com = server:https://223.6.6.6/dns-query
+azchcdnq.com = server:https://223.6.6.6/dns-query
+*.azchcdnq.com = server:https://223.6.6.6/dns-query
+azchcdnr.com = server:https://223.6.6.6/dns-query
+*.azchcdnr.com = server:https://223.6.6.6/dns-query
+azchcdns.com = server:https://223.6.6.6/dns-query
+*.azchcdns.com = server:https://223.6.6.6/dns-query
+azuremigrate.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+azuremigratetest.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+azurestackhub.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+azurestackhubuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+b.c2r.ts.cdn.office.net = server:https://223.6.6.6/dns-query
+bag-cdn.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+bag.itunes.apple.com = server:https://223.6.6.6/dns-query
+beatsbydre.com = server:https://223.6.6.6/dns-query
+*.beatsbydre.com = server:https://223.6.6.6/dns-query
+bj1.api.bing.com = server:https://223.6.6.6/dns-query
+blueaggrestore.com = server:https://223.6.6.6/dns-query
+*.blueaggrestore.com = server:https://223.6.6.6/dns-query
+bluearchive-cn.com = server:https://223.6.6.6/dns-query
+*.bluearchive-cn.com = server:https://223.6.6.6/dns-query
+bluecloudprod.com = server:https://223.6.6.6/dns-query
+*.bluecloudprod.com = server:https://223.6.6.6/dns-query
+bookkeeper.itunes.apple.com = server:https://223.6.6.6/dns-query
+cbdstest.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+cdn-cn.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn-cn1.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn-cn2.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn-cn3.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn-cn4.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn1.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn2.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn3.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cdn4.apple-mapkit.com = server:https://223.6.6.6/dns-query
+cds-cdn.v.aaplimg.com = server:https://223.6.6.6/dns-query
+cds.apple.com = server:https://223.6.6.6/dns-query
+cds.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cdsassets.apple.com = server:https://223.6.6.6/dns-query
+certs-lb.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+certs.apple.com = server:https://223.6.6.6/dns-query
+cl1-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cl1.apple.com = server:https://223.6.6.6/dns-query
+cl2-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cl2-cn.apple.com = server:https://223.6.6.6/dns-query
+cl2.apple.com = server:https://223.6.6.6/dns-query
+cl2.apple.com.edgekey.net.globalredir.akadns.net = server:https://223.6.6.6/dns-query
+cl3-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cl3.apple.com = server:https://223.6.6.6/dns-query
+cl4-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cl4-cn.apple.com = server:https://223.6.6.6/dns-query
+cl4.apple.com = server:https://223.6.6.6/dns-query
+cl5-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cl5.apple.com = server:https://223.6.6.6/dns-query
+client-api.itunes.apple.com = server:https://223.6.6.6/dns-query
+client-update.queniuqe.com = server:https://223.6.6.6/dns-query
+*.client-update.queniuqe.com = server:https://223.6.6.6/dns-query
+clientflow.apple.com = server:https://223.6.6.6/dns-query
+clientflow.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+cma.itunes.apple.com = server:https://223.6.6.6/dns-query
+cn-smp-paymentservices.apple.com = server:https://223.6.6.6/dns-query
+cn.bing.com = server:https://223.6.6.6/dns-query
+*.cn.bing.com = server:https://223.6.6.6/dns-query
+cn.bing.net = server:https://223.6.6.6/dns-query
+*.cn.bing.net = server:https://223.6.6.6/dns-query
+cn.download.nvidia.com = server:https://223.6.6.6/dns-query
+cn.mm.bing.net = server:https://223.6.6.6/dns-query
+*.cn.mm.bing.net = server:https://223.6.6.6/dns-query
+cn.windowssearch.com = server:https://223.6.6.6/dns-query
+collaborate.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+collaborateppe.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+communities.apple.com = server:https://223.6.6.6/dns-query
+configuration.apple.com = server:https://223.6.6.6/dns-query
+configuration.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+crl-lb.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+crl.apple.com = server:https://223.6.6.6/dns-query
+cstat.apple.com = server:https://223.6.6.6/dns-query
+cstat.cdn-apple.com = server:https://223.6.6.6/dns-query
+ctldl.windowsupdate.com = server:https://223.6.6.6/dns-query
+dcg.microsoft.com = server:https://223.6.6.6/dns-query
+*.dcg.microsoft.com = server:https://223.6.6.6/dns-query
+dd-cdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+dejavu.apple.com = server:https://223.6.6.6/dns-query
+developer.microsoft.com = server:https://223.6.6.6/dns-query
+devimages-cdn.apple.com = server:https://223.6.6.6/dns-query
+devstreaming-cdn.apple.com = server:https://223.6.6.6/dns-query
+discussionschinese.apple.com = server:https://223.6.6.6/dns-query
+ditu.live.com = server:https://223.6.6.6/dns-query
+*.ditu.live.com = server:https://223.6.6.6/dns-query
+dl.delivery.mp.microsoft.com = server:https://223.6.6.6/dns-query
+*.dl.delivery.mp.microsoft.com = server:https://223.6.6.6/dns-query
+dl.steam.clngaa.com = server:https://223.6.6.6/dns-query
+*.dl.steam.clngaa.com = server:https://223.6.6.6/dns-query
+download.developer.apple.com = server:https://223.6.6.6/dns-query
+download.microsoft.com = server:https://223.6.6.6/dns-query
+download.visualstudio.microsoft.com = server:https://223.6.6.6/dns-query
+download.windowsupdate.com = server:https://223.6.6.6/dns-query
+*.download.windowsupdate.com = server:https://223.6.6.6/dns-query
+downloaddispatch.itunes.apple.com = server:https://223.6.6.6/dns-query
+dreamspark.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+dreamsparkuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+engkoo.com = server:https://223.6.6.6/dns-query
+*.engkoo.com = server:https://223.6.6.6/dns-query
+entitlements-edge.itunes.apple.com = server:https://223.6.6.6/dns-query
+experiments.apple.com = server:https://223.6.6.6/dns-query
+f.c2r.ts.cdn.office.net = server:https://223.6.6.6/dns-query
+fides-pol.apple.com = server:https://223.6.6.6/dns-query
+fpinit.itunes.apple.com = server:https://223.6.6.6/dns-query
+gog.qtlglb.com = server:https://223.6.6.6/dns-query
+gs-loc-cn.apple.com = server:https://223.6.6.6/dns-query
+gs-loc.apple.com = server:https://223.6.6.6/dns-query
+gsp10-ssl-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp11-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp12-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp13-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp4-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net = server:https://223.6.6.6/dns-query
+gsp5-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gsp85-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe11-2-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe12-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe19-2-cn-ssl.ls-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+gspe19-2-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe19-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe19-cn.ls-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+gspe19-cn.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe21-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe35-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe79-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gspe85-cn-ssl.ls.apple.com = server:https://223.6.6.6/dns-query
+gstore.val.manlaxy.com = server:https://223.6.6.6/dns-query
+*.gstore.val.manlaxy.com = server:https://223.6.6.6/dns-query
+guzzoni-apple-com.v.aaplimg.com = server:https://223.6.6.6/dns-query
+guzzoni.apple.com = server:https://223.6.6.6/dns-query
+guzzoni.smoot.apple.com = server:https://223.6.6.6/dns-query
+images.apple.com.edgekey.net.globalredir.akadns.net = server:https://223.6.6.6/dns-query
+inappcheck-cn.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+inappcheck-lb.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+inappcheck.itunes.apple.com = server:https://223.6.6.6/dns-query
+init-kt.apple.com = server:https://223.6.6.6/dns-query
+init-p01md-lb.push-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+init-p01md.apple.com = server:https://223.6.6.6/dns-query
+init-p01st-lb.push-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+init-p01st.push.apple.com = server:https://223.6.6.6/dns-query
+init-s01st-lb.push-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+init-s01st.push.apple.com = server:https://223.6.6.6/dns-query
+init.ess.apple.com = server:https://223.6.6.6/dns-query
+init.gc-lb.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+init.gc.apple.com = server:https://223.6.6.6/dns-query
+init.itunes.apple.com = server:https://223.6.6.6/dns-query
+iosapps.itunes.apple.com = server:https://223.6.6.6/dns-query
+iosapps.itunes.g.aaplimg.com = server:https://223.6.6.6/dns-query
+ipcdn.apple.com = server:https://223.6.6.6/dns-query
+iphone-ld.apple.com = server:https://223.6.6.6/dns-query
+iphone-ld.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+is-ssl.mzstatic.com-cn-lb.itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+is1-ssl.mzstatic.com = server:https://223.6.6.6/dns-query
+is1.mzstatic.com = server:https://223.6.6.6/dns-query
+is2-ssl.mzstatic.com = server:https://223.6.6.6/dns-query
+is2.mzstatic.com = server:https://223.6.6.6/dns-query
+is3-ssl.mzstatic.com = server:https://223.6.6.6/dns-query
+is3.mzstatic.com = server:https://223.6.6.6/dns-query
+is4-ssl.mzstatic.com = server:https://223.6.6.6/dns-query
+is4.mzstatic.com = server:https://223.6.6.6/dns-query
+is5-ssl.mzstatic.com = server:https://223.6.6.6/dns-query
+is5.mzstatic.com = server:https://223.6.6.6/dns-query
+itacademy.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+itacademyuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+itunes-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+itunes.apple.com = server:https://223.6.6.6/dns-query
+itunesconnect.apple.com = server:https://223.6.6.6/dns-query
+js-cdn.music.apple.com = server:https://223.6.6.6/dns-query
+km.support.apple.com = server:https://223.6.6.6/dns-query
+lex.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+lexuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+maps.apple.com = server:https://223.6.6.6/dns-query
+mbs.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+mcchcdn.com = server:https://223.6.6.6/dns-query
+*.mcchcdn.com = server:https://223.6.6.6/dns-query
+mensura.cdn-apple.com = server:https://223.6.6.6/dns-query
+mesu-cdn.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+mesu-china.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+mesu.apple.com = server:https://223.6.6.6/dns-query
+misc-assets.itunes.apple.com = server:https://223.6.6.6/dns-query
+ml.cdn-apple.com = server:https://223.6.6.6/dns-query
+mpnbenefits.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+mpnbenefitsrtl.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+mpnbenefitsrtluat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+mschcdn.com = server:https://223.6.6.6/dns-query
+*.mschcdn.com = server:https://223.6.6.6/dns-query
+msdn.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+msdprod-ad.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+msproduct.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+music.apple.com = server:https://223.6.6.6/dns-query
+musicstatus.music.apple.com = server:https://223.6.6.6/dns-query
+mvod.itunes.apple.com = server:https://223.6.6.6/dns-query
+myapp.itunes.apple.com = server:https://223.6.6.6/dns-query
+myvs.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+np-edge.itunes.apple.com = server:https://223.6.6.6/dns-query
+o365cn.com = server:https://223.6.6.6/dns-query
+*.o365cn.com = server:https://223.6.6.6/dns-query
+ocsp.apple.com = server:https://223.6.6.6/dns-query
+ocsp2.apple.com = server:https://223.6.6.6/dns-query
+oemsoc.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+oemsocuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+officecdn.microsoft.com = server:https://223.6.6.6/dns-query
+officemkt.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+officemktuat.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+oscdn.apple.com = server:https://223.6.6.6/dns-query
+oscdn.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+osrelease.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+osxapps.itunes.apple.com = server:https://223.6.6.6/dns-query
+osxapps.itunes.g.aaplimg.com = server:https://223.6.6.6/dns-query
+pancake.apple.com = server:https://223.6.6.6/dns-query
+pba0.apple.com = server:https://223.6.6.6/dns-query
+pd-nk.itunes.apple.com = server:https://223.6.6.6/dns-query
+pd.itunes.apple.com = server:https://223.6.6.6/dns-query
+play-edge.itunes.apple.com = server:https://223.6.6.6/dns-query
+play.itunes.apple.com = server:https://223.6.6.6/dns-query
+play.music.apple.com = server:https://223.6.6.6/dns-query
+podcasts.apple.com = server:https://223.6.6.6/dns-query
+podcasts.itunes.apple.com = server:https://223.6.6.6/dns-query
+probe.siri.apple.com = server:https://223.6.6.6/dns-query
+prod-support.apple-support.akadns.net = server:https://223.6.6.6/dns-query
+publicassets.cdn-apple.com = server:https://223.6.6.6/dns-query
+r.bing.com = server:https://223.6.6.6/dns-query
+*.r.bing.com = server:https://223.6.6.6/dns-query
+rsm.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+s.mzstatic.com = server:https://223.6.6.6/dns-query
+s1.mzstatic.com = server:https://223.6.6.6/dns-query
+s2.mzstatic.com = server:https://223.6.6.6/dns-query
+s3.mzstatic.com = server:https://223.6.6.6/dns-query
+s4.mzstatic.com = server:https://223.6.6.6/dns-query
+s5.mzstatic.com = server:https://223.6.6.6/dns-query
+sdx.microsoft.com = server:https://223.6.6.6/dns-query
+se-edge.itunes.apple.com = server:https://223.6.6.6/dns-query
+se2.itunes.apple.com = server:https://223.6.6.6/dns-query
+search.itunes.apple.com = server:https://223.6.6.6/dns-query
+seed-sequoia.siri.apple.com = server:https://223.6.6.6/dns-query
+seed-swallow.siri.apple.com = server:https://223.6.6.6/dns-query
+seed.siri.apple.com = server:https://223.6.6.6/dns-query
+sequoia.apple.com = server:https://223.6.6.6/dns-query
+sf-api-token-service.itunes.apple.com = server:https://223.6.6.6/dns-query
+sh-pod1-smp-device.apple.com = server:https://223.6.6.6/dns-query
+sh-pod2-smp-device.apple.com = server:https://223.6.6.6/dns-query
+sh-pod3-smp-device.apple.com = server:https://223.6.6.6/dns-query
+shazam-insights.cdn-apple.com = server:https://223.6.6.6/dns-query
+shell.cdn.office.net = server:https://223.6.6.6/dns-query
+smp-device-content.apple.com = server:https://223.6.6.6/dns-query
+software.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+sp.itunes.apple.com = server:https://223.6.6.6/dns-query
+speedysub.music.apple.com = server:https://223.6.6.6/dns-query
+st.dl.bscstorage.net = server:https://223.6.6.6/dns-query
+*.st.dl.bscstorage.net = server:https://223.6.6.6/dns-query
+st.dl.eccdnx.com = server:https://223.6.6.6/dns-query
+*.st.dl.eccdnx.com = server:https://223.6.6.6/dns-query
+st.dl.pinyuncloud.com = server:https://223.6.6.6/dns-query
+*.st.dl.pinyuncloud.com = server:https://223.6.6.6/dns-query
+static.gc.apple.com = server:https://223.6.6.6/dns-query
+statics.teams.cdn.office.net = server:https://223.6.6.6/dns-query
+steamchina.com = server:https://223.6.6.6/dns-query
+*.steamchina.com = server:https://223.6.6.6/dns-query
+stocks-sparkline-lb.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+stocks-sparkline.apple.com = server:https://223.6.6.6/dns-query
+store.apple.com = server:https://223.6.6.6/dns-query
+store.apple.com.edgekey.net = server:https://223.6.6.6/dns-query
+store.apple.com.edgekey.net.globalredir.akadns.net = server:https://223.6.6.6/dns-query
+store.storeimages.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+store.storeimages.cdn-apple.com = server:https://223.6.6.6/dns-query
+storecorefulfillment.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+storeedge.microsoft.com = server:https://223.6.6.6/dns-query
+storeedgefd.dsx.mp.microsoft.com = server:https://223.6.6.6/dns-query
+streamingaudio.itunes.apple.com = server:https://223.6.6.6/dns-query
+su.itunes.apple.com = server:https://223.6.6.6/dns-query
+support-china.apple-support.akadns.net = server:https://223.6.6.6/dns-query
+support.apple.com = server:https://223.6.6.6/dns-query
+surface.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+surface.downloads.prss.microsoft.com = server:https://223.6.6.6/dns-query
+swallow-apple-com.v.aaplimg.com = server:https://223.6.6.6/dns-query
+swallow.apple.com = server:https://223.6.6.6/dns-query
+swcatalog-cdn.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+swcatalog.apple.com = server:https://223.6.6.6/dns-query
+swcdn.apple.com = server:https://223.6.6.6/dns-query
+swcdn.g.aaplimg.com = server:https://223.6.6.6/dns-query
+swdist.apple.com = server:https://223.6.6.6/dns-query
+swdist.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+swscan-cdn.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+swscan.apple.com = server:https://223.6.6.6/dns-query
+sylvan.apple.com = server:https://223.6.6.6/dns-query
+sync.itunes.apple.com = server:https://223.6.6.6/dns-query
+tf-feedback.itunes.apple.com = server:https://223.6.6.6/dns-query
+th.bing.com = server:https://223.6.6.6/dns-query
+*.th.bing.com = server:https://223.6.6.6/dns-query
+tj-pod1-smp-device.apple.com = server:https://223.6.6.6/dns-query
+tj-pod2-smp-device.apple.com = server:https://223.6.6.6/dns-query
+tj-pod3-smp-device.apple.com = server:https://223.6.6.6/dns-query
+universal-activity-service.itunes.apple.com = server:https://223.6.6.6/dns-query
+updates-http.cdn-apple.com = server:https://223.6.6.6/dns-query
+updates-http.cdn-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+updates.cdn-apple.com = server:https://223.6.6.6/dns-query
+upp.itunes.apple.com = server:https://223.6.6.6/dns-query
+valid.apple.com = server:https://223.6.6.6/dns-query
+valid.origin-apple.com.akadns.net = server:https://223.6.6.6/dns-query
+vlportal.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+volic.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+vscode.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+vz.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+weather-data.apple.com = server:https://223.6.6.6/dns-query
+weather-data.apple.com.akadns.net = server:https://223.6.6.6/dns-query
+weather-map.apple.com = server:https://223.6.6.6/dns-query
+weather-map2.apple.com = server:https://223.6.6.6/dns-query
+weatherkit.apple.com = server:https://223.6.6.6/dns-query
+windbg.download.prss.microsoft.com = server:https://223.6.6.6/dns-query
+wmsjsteam.com = server:https://223.6.6.6/dns-query
+*.wmsjsteam.com = server:https://223.6.6.6/dns-query
+www.apple.com = server:https://223.6.6.6/dns-query
+www.apple.com.edgekey.net.globalredir.akadns.net = server:https://223.6.6.6/dns-query
+www.support.apple.com = server:https://223.6.6.6/dns-query
+xp.apple.com = server:https://223.6.6.6/dns-query
+xz.pphimalayanrt.com = server:https://223.6.6.6/dns-query

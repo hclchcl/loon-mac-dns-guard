@@ -1,0 +1,3935 @@
+{
+  "version": "1.2.0",
+  "base_commit": "2f7eeb1da025c708575196e1804d79585d28cc49",
+  "design_reference": {
+    "repository": "AIsouler/MyClash",
+    "commit": "071d4ec5764b4700d0c5de41797f20a8bdf6b6d8",
+    "file": "Script/mihomoScript.js"
+  },
+  "domain_source": {
+    "repository": "v2fly/domain-list-community",
+    "release": "20261027070632",
+    "commit": "1b81d3cd34096e5d8cac6bca5935e80f30e990f0",
+    "file": "dlc.dat",
+    "sha256": "6409bf0d157fc389ca0349a1da76b98d7ac2e569fe4e80a3883290e7381bde0f",
+    "license": "MIT"
+  },
+  "selected_source_records": {
+    "APPLE@cn": 297,
+    "CATEGORY-GAMES@cn": 35,
+    "MICROSOFT@cn": 189,
+    "NVIDIA@cn": 4
+  },
+  "base_domestic_mapping_count": 12215,
+  "added_mapping_count": 386,
+  "removed_redundant_mapping_count": 6,
+  "final_domestic_mapping_count": 12595,
+  "domestic_resolver": "https://223.6.6.6/dns-query",
+  "added_patterns": [
+    {
+      "pattern": "*.21vbc.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbc.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.21vbluecloud.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbluecloud.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.21vbluecloud.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbluecloud.net"
+        }
+      ]
+    },
+    {
+      "pattern": "*.aggresmart.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "aggresmart.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdna.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdna.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnb.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnb.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnc.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnc.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnd.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnd.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdne.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdne.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnf.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnf.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdng.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdng.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnh.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnh.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdni.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdni.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnj.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnj.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnk.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnk.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnl.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnl.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnm.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnm.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdno.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdno.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnp.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnp.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnq.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnq.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdnr.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnr.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.azchcdns.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdns.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.beatsbydre.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Domain",
+          "value": "beatsbydre.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.blueaggrestore.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "blueaggrestore.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.bluearchive-cn.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "bluearchive-cn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.bluecloudprod.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "bluecloudprod.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.client-update.queniuqe.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "client-update.queniuqe.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.cn.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.cn.bing.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.bing.net"
+        }
+      ]
+    },
+    {
+      "pattern": "*.cn.mm.bing.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.mm.bing.net"
+        }
+      ]
+    },
+    {
+      "pattern": "*.dcg.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "dcg.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.ditu.live.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "ditu.live.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.dl.delivery.mp.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "dl.delivery.mp.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.dl.steam.clngaa.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "dl.steam.clngaa.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.download.windowsupdate.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "download.windowsupdate.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.engkoo.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "engkoo.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.gstore.val.manlaxy.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "gstore.val.manlaxy.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.mcchcdn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "mcchcdn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.mschcdn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "mschcdn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.o365cn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "o365cn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.r.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "r.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.st.dl.bscstorage.net",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.bscstorage.net"
+        }
+      ]
+    },
+    {
+      "pattern": "*.st.dl.eccdnx.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.eccdnx.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.st.dl.pinyuncloud.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.pinyuncloud.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.steamchina.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "steamchina.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.th.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "th.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "*.wmsjsteam.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "wmsjsteam.com"
+        }
+      ]
+    },
+    {
+      "pattern": "21vbc.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbc.com"
+        }
+      ]
+    },
+    {
+      "pattern": "21vbluecloud.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbluecloud.com"
+        }
+      ]
+    },
+    {
+      "pattern": "21vbluecloud.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "21vbluecloud.net"
+        }
+      ]
+    },
+    {
+      "pattern": "a1.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "a1.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "a2.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "a2.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "a3.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "a3.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "a4.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "a4.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "a5.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "a5.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "adcdownload.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "adcdownload.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "adcdownload.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "adcdownload.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "aggresmart.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "aggresmart.com"
+        }
+      ]
+    },
+    {
+      "pattern": "alibaba.cdn.steampipe.steamcontent.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Full",
+          "value": "alibaba.cdn.steampipe.steamcontent.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-edge-lb-cn.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-edge-lb-cn.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-edge-lb.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-edge-lb.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-edge.apps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-edge.apps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-edge.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-edge.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-search-edge.apps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-search-edge.apps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api-updates.apps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api-updates.apps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api.apps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api.apps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api.media.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api.media.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "amp-api.podcasts.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "amp-api.podcasts.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "aod-ssl.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "aod-ssl.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "aod.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "aod.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "api-edge.apps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "api-edge.apps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "app-site-association.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "app-site-association.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "appldnld.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "appldnld.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "appldnld.g.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "appldnld.g.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "appleid.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "appleid.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "apps.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "apps.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "apptrailers.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "apptrailers.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdna.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdna.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnb.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnb.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnc.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnc.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnd.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnd.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdne.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdne.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnf.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnf.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdng.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdng.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnh.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnh.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdni.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdni.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnj.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnj.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnk.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnk.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnl.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnl.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnm.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnm.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdno.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdno.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnp.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnp.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnq.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnq.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdnr.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdnr.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azchcdns.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "azchcdns.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azuremigrate.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "azuremigrate.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azuremigratetest.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "azuremigratetest.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azurestackhub.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "azurestackhub.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "azurestackhubuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "azurestackhubuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "b.c2r.ts.cdn.office.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "b.c2r.ts.cdn.office.net"
+        }
+      ]
+    },
+    {
+      "pattern": "bag-cdn.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "bag-cdn.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "bag.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "bag.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "beatsbydre.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Domain",
+          "value": "beatsbydre.com"
+        }
+      ]
+    },
+    {
+      "pattern": "bj1.api.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "bj1.api.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "blueaggrestore.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "blueaggrestore.com"
+        }
+      ]
+    },
+    {
+      "pattern": "bluearchive-cn.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "bluearchive-cn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "bluecloudprod.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "bluecloudprod.com"
+        }
+      ]
+    },
+    {
+      "pattern": "bookkeeper.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "bookkeeper.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cbdstest.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "cbdstest.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn-cn.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn-cn.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn-cn1.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn-cn1.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn-cn2.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn-cn2.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn-cn3.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn-cn3.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn-cn4.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn-cn4.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn1.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn1.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn2.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn2.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn3.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn3.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cdn4.apple-mapkit.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdn4.apple-mapkit.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cds-cdn.v.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cds-cdn.v.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cds.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cds.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cds.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cds.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cdsassets.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cdsassets.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "certs-lb.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "certs-lb.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "certs.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "certs.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl1-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl1-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl1.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl1.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl2-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl2-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl2-cn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl2-cn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl2.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl2.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl2.apple.com.edgekey.net.globalredir.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl2.apple.com.edgekey.net.globalredir.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl3-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl3-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl3.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl3.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl4-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl4-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl4-cn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl4-cn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl4.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl4.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cl5-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl5-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cl5.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cl5.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "client-api.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "client-api.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "client-update.queniuqe.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "client-update.queniuqe.com"
+        }
+      ]
+    },
+    {
+      "pattern": "clientflow.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "clientflow.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "clientflow.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "clientflow.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cma.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cma.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cn-smp-paymentservices.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cn-smp-paymentservices.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cn.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cn.bing.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.bing.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cn.download.nvidia.com",
+      "sources": [
+        {
+          "group": "NVIDIA@cn",
+          "type": "Full",
+          "value": "cn.download.nvidia.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cn.mm.bing.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "cn.mm.bing.net"
+        }
+      ]
+    },
+    {
+      "pattern": "cn.windowssearch.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "cn.windowssearch.com"
+        }
+      ]
+    },
+    {
+      "pattern": "collaborate.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "collaborate.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "collaborateppe.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "collaborateppe.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "communities.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "communities.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "configuration.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "configuration.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "configuration.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "configuration.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "crl-lb.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "crl-lb.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "crl.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "crl.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cstat.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cstat.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "cstat.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "cstat.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ctldl.windowsupdate.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "ctldl.windowsupdate.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dcg.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "dcg.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dd-cdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "dd-cdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "dejavu.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "dejavu.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "developer.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "developer.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "devimages-cdn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "devimages-cdn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "devstreaming-cdn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "devstreaming-cdn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "discussionschinese.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "discussionschinese.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ditu.live.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "ditu.live.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dl.delivery.mp.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "dl.delivery.mp.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dl.steam.clngaa.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "dl.steam.clngaa.com"
+        }
+      ]
+    },
+    {
+      "pattern": "download.developer.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "download.developer.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "download.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "download.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "download.visualstudio.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "download.visualstudio.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "download.windowsupdate.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "download.windowsupdate.com"
+        }
+      ]
+    },
+    {
+      "pattern": "downloaddispatch.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "downloaddispatch.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dreamspark.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "dreamspark.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "dreamsparkuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "dreamsparkuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "engkoo.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "engkoo.com"
+        }
+      ]
+    },
+    {
+      "pattern": "entitlements-edge.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "entitlements-edge.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "experiments.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "experiments.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "f.c2r.ts.cdn.office.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "f.c2r.ts.cdn.office.net"
+        }
+      ]
+    },
+    {
+      "pattern": "fides-pol.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "fides-pol.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "fpinit.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "fpinit.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gog.qtlglb.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Full",
+          "value": "gog.qtlglb.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gs-loc-cn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gs-loc-cn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gs-loc.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gs-loc.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp10-ssl-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp10-ssl-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp11-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp11-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp12-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp12-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp13-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp13-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp4-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp4-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp5-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp5-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gsp85-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gsp85-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe11-2-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe11-2-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe12-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe12-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe19-2-cn-ssl.ls-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe19-2-cn-ssl.ls-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe19-2-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe19-2-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe19-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe19-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe19-cn.ls-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe19-cn.ls-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe19-cn.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe19-cn.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe21-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe21-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe35-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe35-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe79-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe79-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gspe85-cn-ssl.ls.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "gspe85-cn-ssl.ls.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "gstore.val.manlaxy.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "gstore.val.manlaxy.com"
+        }
+      ]
+    },
+    {
+      "pattern": "guzzoni-apple-com.v.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "guzzoni-apple-com.v.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "guzzoni.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "guzzoni.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "guzzoni.smoot.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "guzzoni.smoot.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "images.apple.com.edgekey.net.globalredir.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "images.apple.com.edgekey.net.globalredir.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "inappcheck-cn.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "inappcheck-cn.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "inappcheck-lb.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "inappcheck-lb.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "inappcheck.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "inappcheck.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init-kt.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-kt.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init-p01md-lb.push-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-p01md-lb.push-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "init-p01md.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-p01md.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init-p01st-lb.push-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-p01st-lb.push-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "init-p01st.push.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-p01st.push.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init-s01st-lb.push-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-s01st-lb.push-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "init-s01st.push.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init-s01st.push.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init.ess.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init.ess.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init.gc-lb.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init.gc-lb.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "init.gc.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init.gc.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "init.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "init.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "iosapps.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "iosapps.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "iosapps.itunes.g.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "iosapps.itunes.g.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ipcdn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "ipcdn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "iphone-ld.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "iphone-ld.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "iphone-ld.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "iphone-ld.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "is-ssl.mzstatic.com-cn-lb.itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is-ssl.mzstatic.com-cn-lb.itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "is1-ssl.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is1-ssl.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is1.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is1.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is2-ssl.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is2-ssl.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is2.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is2.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is3-ssl.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is3-ssl.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is3.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is3.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is4-ssl.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is4-ssl.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is4.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is4.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is5-ssl.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is5-ssl.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "is5.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "is5.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "itacademy.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "itacademy.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "itacademyuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "itacademyuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "itunes-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "itunes-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "itunesconnect.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "itunesconnect.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "js-cdn.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "js-cdn.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "km.support.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "km.support.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "lex.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "lex.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "lexuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "lexuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "maps.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "maps.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mbs.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "mbs.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mcchcdn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "mcchcdn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mensura.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "mensura.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mesu-cdn.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "mesu-cdn.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "mesu-china.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "mesu-china.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "mesu.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "mesu.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "misc-assets.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "misc-assets.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ml.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "ml.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mpnbenefits.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "mpnbenefits.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mpnbenefitsrtl.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "mpnbenefitsrtl.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mpnbenefitsrtluat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "mpnbenefitsrtluat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mschcdn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "mschcdn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "msdn.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "msdn.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "msdprod-ad.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "msdprod-ad.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "msproduct.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "msproduct.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "musicstatus.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "musicstatus.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "mvod.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "mvod.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "myapp.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "myapp.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "myvs.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "myvs.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "np-edge.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "np-edge.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "o365cn.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "o365cn.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ocsp.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "ocsp.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "ocsp2.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "ocsp2.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "oemsoc.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "oemsoc.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "oemsocuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "oemsocuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "officecdn.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "officecdn.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "officemkt.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "officemkt.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "officemktuat.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "officemktuat.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "oscdn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "oscdn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "oscdn.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "oscdn.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "osrelease.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "osrelease.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "osxapps.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "osxapps.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "osxapps.itunes.g.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "osxapps.itunes.g.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "pancake.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "pancake.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "pba0.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "pba0.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "pd-nk.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "pd-nk.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "pd.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "pd.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "play-edge.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "play-edge.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "play.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "play.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "play.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "play.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "podcasts.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "podcasts.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "podcasts.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "podcasts.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "probe.siri.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "probe.siri.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "prod-support.apple-support.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "prod-support.apple-support.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "publicassets.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "publicassets.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "r.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "r.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "rsm.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "rsm.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s1.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s1.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s2.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s2.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s3.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s3.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s4.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s4.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "s5.mzstatic.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "s5.mzstatic.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sdx.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "sdx.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "se-edge.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "se-edge.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "se2.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "se2.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "search.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "search.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "seed-sequoia.siri.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "seed-sequoia.siri.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "seed-swallow.siri.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "seed-swallow.siri.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "seed.siri.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "seed.siri.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sequoia.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sequoia.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sf-api-token-service.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sf-api-token-service.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sh-pod1-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sh-pod1-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sh-pod2-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sh-pod2-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sh-pod3-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sh-pod3-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "shazam-insights.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "shazam-insights.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "shell.cdn.office.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "shell.cdn.office.net"
+        }
+      ]
+    },
+    {
+      "pattern": "smp-device-content.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "smp-device-content.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "software.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "software.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sp.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sp.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "speedysub.music.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "speedysub.music.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "st.dl.bscstorage.net",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.bscstorage.net"
+        }
+      ]
+    },
+    {
+      "pattern": "st.dl.eccdnx.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.eccdnx.com"
+        }
+      ]
+    },
+    {
+      "pattern": "st.dl.pinyuncloud.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "st.dl.pinyuncloud.com"
+        }
+      ]
+    },
+    {
+      "pattern": "static.gc.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "static.gc.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "statics.teams.cdn.office.net",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "statics.teams.cdn.office.net"
+        }
+      ]
+    },
+    {
+      "pattern": "steamchina.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "steamchina.com"
+        }
+      ]
+    },
+    {
+      "pattern": "stocks-sparkline-lb.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "stocks-sparkline-lb.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "stocks-sparkline.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "stocks-sparkline.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "store.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "store.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "store.apple.com.edgekey.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "store.apple.com.edgekey.net"
+        }
+      ]
+    },
+    {
+      "pattern": "store.apple.com.edgekey.net.globalredir.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "store.apple.com.edgekey.net.globalredir.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "store.storeimages.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "store.storeimages.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "store.storeimages.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "store.storeimages.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "storecorefulfillment.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "storecorefulfillment.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "storeedge.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "storeedge.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "storeedgefd.dsx.mp.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "storeedgefd.dsx.mp.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "streamingaudio.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "streamingaudio.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "su.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "su.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "support-china.apple-support.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "support-china.apple-support.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "support.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "support.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "surface.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "surface.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "surface.downloads.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "surface.downloads.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swallow-apple-com.v.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swallow-apple-com.v.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swallow.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swallow.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swcatalog-cdn.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swcatalog-cdn.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "swcatalog.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swcatalog.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swcdn.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swcdn.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swcdn.g.aaplimg.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swcdn.g.aaplimg.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swdist.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swdist.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "swdist.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swdist.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "swscan-cdn.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swscan-cdn.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "swscan.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "swscan.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sylvan.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sylvan.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "sync.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "sync.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "tf-feedback.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "tf-feedback.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "th.bing.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Domain",
+          "value": "th.bing.com"
+        }
+      ]
+    },
+    {
+      "pattern": "tj-pod1-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "tj-pod1-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "tj-pod2-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "tj-pod2-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "tj-pod3-smp-device.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "tj-pod3-smp-device.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "universal-activity-service.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "universal-activity-service.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "updates-http.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "updates-http.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "updates-http.cdn-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "updates-http.cdn-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "updates.cdn-apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "updates.cdn-apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "upp.itunes.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "upp.itunes.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "valid.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "valid.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "valid.origin-apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "valid.origin-apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "vlportal.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "vlportal.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "volic.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "volic.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "vscode.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "vscode.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "vz.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "vz.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "weather-data.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "weather-data.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "weather-data.apple.com.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "weather-data.apple.com.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "weather-map.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "weather-map.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "weather-map2.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "weather-map2.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "weatherkit.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "weatherkit.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "windbg.download.prss.microsoft.com",
+      "sources": [
+        {
+          "group": "MICROSOFT@cn",
+          "type": "Full",
+          "value": "windbg.download.prss.microsoft.com"
+        }
+      ]
+    },
+    {
+      "pattern": "wmsjsteam.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Domain",
+          "value": "wmsjsteam.com"
+        }
+      ]
+    },
+    {
+      "pattern": "www.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "www.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "www.apple.com.edgekey.net.globalredir.akadns.net",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "www.apple.com.edgekey.net.globalredir.akadns.net"
+        }
+      ]
+    },
+    {
+      "pattern": "www.support.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "www.support.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "xp.apple.com",
+      "sources": [
+        {
+          "group": "APPLE@cn",
+          "type": "Full",
+          "value": "xp.apple.com"
+        }
+      ]
+    },
+    {
+      "pattern": "xz.pphimalayanrt.com",
+      "sources": [
+        {
+          "group": "CATEGORY-GAMES@cn",
+          "type": "Full",
+          "value": "xz.pphimalayanrt.com"
+        }
+      ]
+    }
+  ],
+  "removed_redundant": [
+    {
+      "pattern": "lf-c-flwb.bytetos.com",
+      "covered_by": "*.bytetos.com"
+    },
+    {
+      "pattern": "lf3-webcast.bytetos.com",
+      "covered_by": "*.bytetos.com"
+    },
+    {
+      "pattern": "lf-cdn-tos.bytescm.com",
+      "covered_by": "*.bytescm.com"
+    },
+    {
+      "pattern": "lf-security.bytegoofy.com",
+      "covered_by": "*.bytegoofy.com"
+    },
+    {
+      "pattern": "lf-douyin-pc-web.douyinstatic.com",
+      "covered_by": "*.douyinstatic.com"
+    },
+    {
+      "pattern": "lf-normal-gr-sourcecdn.bytegecko.com",
+      "covered_by": "*.bytegecko.com"
+    }
+  ],
+  "skipped_unsupported_records": [
+    {
+      "group": "CATEGORY-GAMES@cn",
+      "type": 1,
+      "value": "^.+-mihayo\\.akamaized\\.net$"
+    },
+    {
+      "group": "CATEGORY-GAMES@cn",
+      "type": 1,
+      "value": "^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$"
+    },
+    {
+      "group": "CATEGORY-GAMES@cn",
+      "type": 1,
+      "value": "^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$"
+    }
+  ],
+  "checks_are_static_only": true,
+  "runtime_tested": false
+}

@@ -1,0 +1,42 @@
+#!name = Mac DNS 防泄漏 · 国内分流版
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
+#!desc = v1.2.0：国内清单及 Apple、微软、游戏下载的 CN 条目使用直连阿里 DoH；默认 Cloudflare DoH 经 PROXY。检测网站遵循普通分流，不再特殊处理。需关闭查询回落并使用 Rule 模式。与标准版只启用一个。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard
+#!system = macOS
+#!system_version = 13.0
+#!date = 2026-10-28
+#!tag = DNS,DoH,隐私,macOS
+#!type = normal
+
+# v1.2.0 | MIT
+# 借鉴 AIsouler/MyClash 的国内、默认及节点引导 DNS 分工；使用 Loon 原生语法独立实现。
+# 生成来源：templates/Loon-Mac-DNS-Guard-CN.plugin + docs/domestic-domains.txt。
+# 不含脚本、MitM、证书、节点凭据、FINAL 或强制业务 DIRECT 规则。
+# PROXY 应绑定可用的境外代理；绑定 DIRECT 时，解析器会看到本地网络出口。
+# 插件 DNS 只能追加；其他全局 DNS、Host 与 SSID 配置仍需单独核对。
+# hijack-dns、查询回落及节点 server-dns 按 docs/main-config.txt 配置。
+
+[General]
+doh-server = https://1.1.1.1/dns-query,https://1.0.0.1/dns-query
+
+[Rule]
+# 固定 IP 的 DoH 端点避免域名引导解析；保留正常 TLS 证书校验。
+AND,((DEST-PORT,443),(IP-CIDR,1.1.1.1/32,no-resolve)),PROXY
+AND,((DEST-PORT,443),(IP-CIDR,1.0.0.1/32,no-resolve)),PROXY
+# 阿里 DoH 供国内解析及独立节点引导使用，不加入全局并发 DNS 列表。
+AND,((DEST-PORT,443),(IP-CIDR,223.5.5.5/32,no-resolve)),DIRECT
+AND,((DEST-PORT,443),(IP-CIDR,223.6.6.6/32,no-resolve)),DIRECT
+
+# 检测网站与普通网站使用相同的 DNS/业务规则流程，不设置检测专用映射。
+# 仅限制实际进入 Loon 且命中规则的连接；本地规则优先于插件规则。
+# 未被主配置接管的 53 端口可能被拒绝，拒绝不等于透明代答。
+# 853/784 阻断常见 DoT/DoQ，也可能影响这些端口上的其他服务。
+DEST-PORT,53,REJECT
+DEST-PORT,853,REJECT
+DEST-PORT,784,REJECT
+
+[Host]
+# 保留 v1.1.1 的 223.6.6.6；不把曾故障的端点重新加入国内并发查询。
+# 以下清单只指定解析服务器，网站访问出口仍由原来的业务规则决定。
+{{DOMESTIC_HOSTS}}
