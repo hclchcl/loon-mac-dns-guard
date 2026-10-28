@@ -9,7 +9,7 @@
 #!tag = DNS,DoH,隐私,macOS
 #!type = normal
 
-# v1.0.2 | MIT
+# v1.1.0 | MIT
 # 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
 # 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
 # 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
@@ -288,6 +288,92 @@ abchina.com = server:https://223.5.5.5/dns-query
 *.abchina.com = server:https://223.5.5.5/dns-query
 cmbchina.com = server:https://223.5.5.5/dns-query
 *.cmbchina.com = server:https://223.5.5.5/dns-query
+
+# v1.1.0：常用国内服务补充。逐个对照过 Cloudflare 与阿里 DoH 的解析结果和直连耗时，
+# 多数在 Cloudflare 下拿到境外节点而明显变慢；依据见 docs/cdn-optimization.md。
+# 只改变 DNS 查询服务器；业务访问仍遵守原有分流规则。
+pkulaw.com = server:https://223.5.5.5/dns-query
+*.pkulaw.com = server:https://223.5.5.5/dns-query
+cnki.net = server:https://223.5.5.5/dns-query
+*.cnki.net = server:https://223.5.5.5/dns-query
+icourse163.org = server:https://223.5.5.5/dns-query
+*.icourse163.org = server:https://223.5.5.5/dns-query
+chaoxing.com = server:https://223.5.5.5/dns-query
+*.chaoxing.com = server:https://223.5.5.5/dns-query
+iqiyi.com = server:https://223.5.5.5/dns-query
+*.iqiyi.com = server:https://223.5.5.5/dns-query
+iqiyipic.com = server:https://223.5.5.5/dns-query
+*.iqiyipic.com = server:https://223.5.5.5/dns-query
+youku.com = server:https://223.5.5.5/dns-query
+*.youku.com = server:https://223.5.5.5/dns-query
+mgtv.com = server:https://223.5.5.5/dns-query
+*.mgtv.com = server:https://223.5.5.5/dns-query
+douyu.com = server:https://223.5.5.5/dns-query
+*.douyu.com = server:https://223.5.5.5/dns-query
+huya.com = server:https://223.5.5.5/dns-query
+*.huya.com = server:https://223.5.5.5/dns-query
+ximalaya.com = server:https://223.5.5.5/dns-query
+*.ximalaya.com = server:https://223.5.5.5/dns-query
+xmcdn.com = server:https://223.5.5.5/dns-query
+*.xmcdn.com = server:https://223.5.5.5/dns-query
+kugou.com = server:https://223.5.5.5/dns-query
+*.kugou.com = server:https://223.5.5.5/dns-query
+hupu.com = server:https://223.5.5.5/dns-query
+*.hupu.com = server:https://223.5.5.5/dns-query
+weibocdn.com = server:https://223.5.5.5/dns-query
+*.weibocdn.com = server:https://223.5.5.5/dns-query
+douban.com = server:https://223.5.5.5/dns-query
+*.douban.com = server:https://223.5.5.5/dns-query
+doubanio.com = server:https://223.5.5.5/dns-query
+*.doubanio.com = server:https://223.5.5.5/dns-query
+csdn.net = server:https://223.5.5.5/dns-query
+*.csdn.net = server:https://223.5.5.5/dns-query
+cnblogs.com = server:https://223.5.5.5/dns-query
+*.cnblogs.com = server:https://223.5.5.5/dns-query
+jianshu.com = server:https://223.5.5.5/dns-query
+*.jianshu.com = server:https://223.5.5.5/dns-query
+gitee.com = server:https://223.5.5.5/dns-query
+*.gitee.com = server:https://223.5.5.5/dns-query
+oschina.net = server:https://223.5.5.5/dns-query
+*.oschina.net = server:https://223.5.5.5/dns-query
+ithome.com = server:https://223.5.5.5/dns-query
+*.ithome.com = server:https://223.5.5.5/dns-query
+sspai.com = server:https://223.5.5.5/dns-query
+*.sspai.com = server:https://223.5.5.5/dns-query
+36kr.com = server:https://223.5.5.5/dns-query
+*.36kr.com = server:https://223.5.5.5/dns-query
+ifeng.com = server:https://223.5.5.5/dns-query
+*.ifeng.com = server:https://223.5.5.5/dns-query
+sohu.com = server:https://223.5.5.5/dns-query
+*.sohu.com = server:https://223.5.5.5/dns-query
+so.com = server:https://223.5.5.5/dns-query
+*.so.com = server:https://223.5.5.5/dns-query
+qhimg.com = server:https://223.5.5.5/dns-query
+*.qhimg.com = server:https://223.5.5.5/dns-query
+sogou.com = server:https://223.5.5.5/dns-query
+*.sogou.com = server:https://223.5.5.5/dns-query
+pinduoduo.com = server:https://223.5.5.5/dns-query
+*.pinduoduo.com = server:https://223.5.5.5/dns-query
+yangkeduo.com = server:https://223.5.5.5/dns-query
+*.yangkeduo.com = server:https://223.5.5.5/dns-query
+vip.com = server:https://223.5.5.5/dns-query
+*.vip.com = server:https://223.5.5.5/dns-query
+suning.com = server:https://223.5.5.5/dns-query
+*.suning.com = server:https://223.5.5.5/dns-query
+dangdang.com = server:https://223.5.5.5/dns-query
+*.dangdang.com = server:https://223.5.5.5/dns-query
+smzdm.com = server:https://223.5.5.5/dns-query
+*.smzdm.com = server:https://223.5.5.5/dns-query
+58.com = server:https://223.5.5.5/dns-query
+*.58.com = server:https://223.5.5.5/dns-query
+ke.com = server:https://223.5.5.5/dns-query
+*.ke.com = server:https://223.5.5.5/dns-query
+alipan.com = server:https://223.5.5.5/dns-query
+*.alipan.com = server:https://223.5.5.5/dns-query
+10010.com = server:https://223.5.5.5/dns-query
+*.10010.com = server:https://223.5.5.5/dns-query
+unionpay.com = server:https://223.5.5.5/dns-query
+*.unionpay.com = server:https://223.5.5.5/dns-query
 
 # 抖音网页资源：仅补充实际观察并核对过的主机名，避免扩大到共享 CDN 的全部后缀。
 # 这些映射只改变 DNS 查询服务器；业务访问仍遵守原有分流规则。
