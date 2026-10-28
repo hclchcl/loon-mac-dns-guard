@@ -1,5 +1,5 @@
 {
-  "release": "1.0.0",
+  "release": "1.0.1",
   "date": "2026-10-28",
   "target": "Loon for Mac 0.5.0 (1009)",
   "runtime_tested": false,
@@ -57,21 +57,31 @@
   },
   "outputs": {
     "Loon-Mac-Ad-Filter.plugin": {
-      "sha256": "57a67f99a8ff6baa9a61e106763262c2e74fa324739d551dc6e73829a162f3aa",
-      "bytes": 4467
+      "sha256": "896af8ab4839beb9c5a11cf3ab32ed795ac0cd072d79844bdd12389a917bd672",
+      "bytes": 4551
     },
     "Loon-Mac-Ad-Platforms-Block.plugin": {
-      "sha256": "bd6748eeca62b571deeadfc1862d201daa2463e3319ee1b0daf4a7fde1be7568",
-      "bytes": 3660
+      "sha256": "9e9e4106413e73f3df9797549261f1617256145b7f7178105ea9f6f2a39fc45e",
+      "bytes": 3753
     },
     "Loon-Mac-HTTPDNS-Block.plugin": {
-      "sha256": "796ffe8a1854534e98e89ec23472d03555e9e2c8d72f45f395182c10b0f0013f",
-      "bytes": 10954
+      "sha256": "5cf98b17611dc003e04e345a61726df9809322747645215cf2d3b3839a92b342",
+      "bytes": 11042
     }
   },
   "independent_repositories": {
     "Loon-Mac-HTTPDNS-Block.plugin": "https://github.com/hclchcl/loon-mac-httpdns-block",
     "Loon-Mac-Ad-Platforms-Block.plugin": "https://github.com/hclchcl/loon-mac-ad-platforms-block",
     "Loon-Mac-Ad-Filter.plugin": "https://github.com/hclchcl/loon-mac-ad-filter"
+  },
+  "display_icon": {
+    "path": "icon.png",
+    "source": "icon.svg",
+    "size": [
+      256,
+      256
+    ],
+    "author": "hclchcl",
+    "date": "2026-10-28"
   }
 }

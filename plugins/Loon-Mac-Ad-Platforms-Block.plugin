@@ -1,4 +1,5 @@
 #!name = Mac 广告平台拦截器
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-ad-platforms-block/main/icon.png
 #!desc = 拦截清单内广告投放、广告资源与归因平台，使用域名规则，适用于进入 Loon 的 Mac 应用和浏览器。无需证书、脚本或 PROXY；不保证删除同域信息流广告。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-ad-platforms-block
@@ -8,7 +9,7 @@
 #!tag = macOS,去广告
 #!type = normal
 
-# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# v1.0.1 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
 # SPDX-License-Identifier: GPL-2.0-only
 # 上游：blackmatrix7/ios_rule_script，详见 sources/manifest.json
 # 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。

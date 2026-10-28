@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256" role="img">
+<title>DNS 防泄漏</title>
+<desc>Original minimal icon by hclchcl, 2026. Editable SVG source.</desc>
+<rect x="8" y="8" width="240" height="240" rx="56" fill="#117C74"/>
+<path d="M128 49 192 76v51c0 44-31 71-64 84-33-13-64-40-64-84V76Z" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="round"/><path d="m98 129 22 22 39-42" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

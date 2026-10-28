@@ -1,4 +1,5 @@
 #!name = Mac HTTPDNS 拦截器
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-httpdns-block/main/icon.png
 #!desc = 阻止清单内 HTTPDNS 域名及常见 HTTP(S) 端口上的硬编码解析 IP，补充明文 HTTP 路径拦截。无需 PROXY 或 MitM；不保证所有应用都会回落系统 DNS。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-httpdns-block
@@ -8,7 +9,7 @@
 #!tag = macOS,去广告
 #!type = normal
 
-# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# v1.0.1 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
 # SPDX-License-Identifier: GPL-3.0-only
 # 上游：VirgilClyne/GetSomeFries，详见 sources/manifest.json
 # 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。

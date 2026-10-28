@@ -1,4 +1,5 @@
 #!name = Mac DNS 防泄漏
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
 #!desc = Cloudflare DoH 经绑定的 PROXY，拦截进入 Loon 的常见独立 DNS 端口；检测网站走同一代理。启用前需关闭查询回落、将 DoH 模式设为 Rule，并检查主配置与其他插件的 DNS。适配 Loon for Mac 0.5.0 (1009)；完整步骤见仓库说明。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-dns-guard
@@ -8,7 +9,7 @@
 #!tag = DNS,DoH,隐私,macOS
 #!type = normal
 
-# v1.0.0 | MIT
+# v1.0.1 | MIT
 # 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
 # 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
 # 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。

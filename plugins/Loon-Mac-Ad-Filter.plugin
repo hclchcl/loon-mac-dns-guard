@@ -1,4 +1,5 @@
 #!name = Mac 应用与网页广告过滤器
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-ad-filter/main/icon.png
 #!desc = 拦截常用服务的专用广告域名，并对百度网盘、网易、迅雷、天翼云盘、有道、豆瓣、虎扑及 Inoreader 的已列广告路径做原生复写。HTTPS 路径需启用 MitM 并信任证书；效果待实测，不含完整 iOS 净化逻辑。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-ad-filter
@@ -8,7 +9,7 @@
 #!tag = macOS,去广告
 #!type = normal
 
-# v1.0.0 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
+# v1.0.1 | 目标：Loon for Mac 0.5.0 (1009)；待使用者实机测试。
 # SPDX-License-Identifier: GPL-2.0-only
 # 上游：blackmatrix7/ios_rule_script，详见 sources/manifest.json
 # 适配修改：hclchcl，2026-10-28；署名与许可详见 plugins/NOTICE.md。

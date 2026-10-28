@@ -1,4 +1,5 @@
 #!name = Mac DNS 防泄漏 · 国内分流版
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
 #!desc = 默认 Cloudflare DoH 经 PROXY；.cn、中文中国域名及清单内常见国内服务改用直连阿里 DoH。业务访问仍遵守原分流。需关闭查询回落、DoH 模式设为 Rule，并按仓库说明配置 DNS 接管及节点引导。与标准版只启用一个。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-dns-guard
@@ -8,7 +9,7 @@
 #!tag = DNS,DoH,隐私,macOS
 #!type = normal
 
-# v1.0.0 | MIT
+# v1.0.1 | MIT
 # 独立实现；参考 iPhone 镜像中插件展示的功能方向，未复制其源码。
 # 不填写 iOS 的 3.x 最低版本，避免限制 Mac 的 0.x 版本。
 # 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
