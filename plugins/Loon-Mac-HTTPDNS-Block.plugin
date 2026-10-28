@@ -1,7 +1,7 @@
 #!name = Mac HTTPDNS 拦截器
 #!desc = 阻止清单内 HTTPDNS 域名及常见 HTTP(S) 端口上的硬编码解析 IP，补充明文 HTTP 路径拦截。无需 PROXY 或 MitM；不保证所有应用都会回落系统 DNS。
 #!author = hclchcl
-#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/httpdns.md
+#!homepage = https://github.com/hclchcl/loon-mac-httpdns-block
 #!system = macOS
 #!system_version = 13.0
 #!date = 2026-10-28

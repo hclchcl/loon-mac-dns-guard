@@ -1,14 +1,16 @@
 # Loon for Mac 去广告插件
 
+三个插件已各自建立独立仓库和主页，表格中的名称可直接打开对应主页。原目录保留早期导入链接。
+
 参照 Mac Loon 当前前三个插件的功能分工，面向 **Loon for Mac 0.5.0（Build 1009）、macOS 13 及以上** 制作的三个独立插件。规则来自注明许可的公开项目，经选择、收窄和语法转换后发布；**未复制可莉插件源码，不是原作者的官方 Mac 版，也不承诺与原版覆盖完全相同。**
 
 按用户要求，这次只制作和发布，未导入、启用或进行实机效果测试。下表是文件内配置数量，不是实际拦截数量。
 
 | 插件 | 对应的功能方向 | 本次配置 | 是否需要证书 |
 | --- | --- | --- | --- |
-| [Mac HTTPDNS 拦截器](Loon-Mac-HTTPDNS-Block.plugin) | HTTPDNS 拦截器 | 81 条规则、42 条明文 HTTP 复写 | 不需要 |
-| [Mac 广告平台拦截器](Loon-Mac-Ad-Platforms-Block.plugin) | 广告平台拦截器 | 77 条广告平台规则 | 不需要 |
-| [Mac 应用与网页广告过滤器](Loon-Mac-Ad-Filter.plugin) | 可莉广告过滤器的按服务处理广告这一方向 | 20 条专用域名规则、15 条路径复写、34 个精确 MitM 域名 | 域名规则不需要；HTTPS 路径复写需要 |
+| [Mac HTTPDNS 拦截器](https://github.com/hclchcl/loon-mac-httpdns-block) | HTTPDNS 拦截器 | 81 条规则、42 条明文 HTTP 复写 | 不需要 |
+| [Mac 广告平台拦截器](https://github.com/hclchcl/loon-mac-ad-platforms-block) | 广告平台拦截器 | 77 条广告平台规则 | 不需要 |
+| [Mac 应用与网页广告过滤器](https://github.com/hclchcl/loon-mac-ad-filter) | 可莉广告过滤器的按服务处理广告这一方向 | 20 条专用域名规则、15 条路径复写、34 个精确 MitM 域名 | 域名规则不需要；HTTPS 路径复写需要 |
 
 三个插件可以搭配，也可以分别启用；它们不需要配置 `PROXY`，不修改 DNS 服务器，不改变已有 DNS 防泄漏插件的策略。
 
@@ -19,19 +21,19 @@
 HTTPDNS 拦截器：
 
 ```text
-https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/plugins/Loon-Mac-HTTPDNS-Block.plugin
+https://raw.githubusercontent.com/hclchcl/loon-mac-httpdns-block/main/Loon-Mac-HTTPDNS-Block.plugin
 ```
 
 广告平台拦截器：
 
 ```text
-https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/plugins/Loon-Mac-Ad-Platforms-Block.plugin
+https://raw.githubusercontent.com/hclchcl/loon-mac-ad-platforms-block/main/Loon-Mac-Ad-Platforms-Block.plugin
 ```
 
 应用与网页广告过滤器：
 
 ```text
-https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/plugins/Loon-Mac-Ad-Filter.plugin
+https://raw.githubusercontent.com/hclchcl/loon-mac-ad-filter/main/Loon-Mac-Ad-Filter.plugin
 ```
 
 无需一次性停用其他不相干插件，也不要删除原插件。可以先添加新文件、暂不启用，保存原设置后逐个切换和自行测试。文件更新使用 Loon 自带的插件更新功能；本项目采用固定来源快照，不会自动追随其他作者规则的每次变化。
@@ -60,4 +62,5 @@ https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/plugins/Loon-M
 
 ## 许可
 
-HTTPDNS 插件及其上游来源按 [GPL-3.0](licenses/GPL-3.0.txt) 发布；另两个插件及其规则选择按 [GPL-2.0](licenses/GPL-2.0.txt) 发布。它们在同一仓库中分别发行，根目录 DNS 插件的 MIT 许可不覆盖这些派生规则。具体署名、版本和修改记录见 [NOTICE](NOTICE.md) 与 [来源清单](sources/manifest.json)。
+HTTPDNS 插件及其上游来源按 [GPL-3.0](licenses/GPL-3.0.txt) 发布；另两个插件及其规则选择按 [GPL-2.0](licenses/GPL-2.0.txt) 发布。它们在独立仓库中分别发行；本目录保留兼容入口。根目录 DNS 插件的 MIT 许可不覆盖这些派生规则。具体署名、版本和修改记录见 [NOTICE](NOTICE.md) 与 [来源清单](sources/manifest.json)。
+

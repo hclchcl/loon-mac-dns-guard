@@ -1,7 +1,7 @@
 #!name = Mac 应用与网页广告过滤器
 #!desc = 拦截常用服务的专用广告域名，并对百度网盘、网易、迅雷、天翼云盘、有道、豆瓣、虎扑及 Inoreader 的已列广告路径做原生复写。HTTPS 路径需启用 MitM 并信任证书；效果待实测，不含完整 iOS 净化逻辑。
 #!author = hclchcl
-#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/ad-filter.md
+#!homepage = https://github.com/hclchcl/loon-mac-ad-filter
 #!system = macOS
 #!system_version = 13.0
 #!date = 2026-10-28

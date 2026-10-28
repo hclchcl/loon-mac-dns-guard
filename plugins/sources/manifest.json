@@ -57,16 +57,21 @@
   },
   "outputs": {
     "Loon-Mac-Ad-Filter.plugin": {
-      "sha256": "a71584f8c186cf899ab829d04fb0927e3b25c53ce50a4bec1f1abfc27ac6b090",
-      "bytes": 4503
+      "sha256": "57a67f99a8ff6baa9a61e106763262c2e74fa324739d551dc6e73829a162f3aa",
+      "bytes": 4467
     },
     "Loon-Mac-Ad-Platforms-Block.plugin": {
-      "sha256": "58a6a8c360c93340c8e114ba4020528b3b3abe0b7cd34e41216f8dc051742b04",
-      "bytes": 3690
+      "sha256": "bd6748eeca62b571deeadfc1862d201daa2463e3319ee1b0daf4a7fde1be7568",
+      "bytes": 3660
     },
     "Loon-Mac-HTTPDNS-Block.plugin": {
-      "sha256": "cd7d67fc96028871609578f4cc08b91ef7cb44f8992e19fa5000fcc90d27fe45",
-      "bytes": 10984
+      "sha256": "796ffe8a1854534e98e89ec23472d03555e9e2c8d72f45f395182c10b0f0013f",
+      "bytes": 10954
     }
+  },
+  "independent_repositories": {
+    "Loon-Mac-HTTPDNS-Block.plugin": "https://github.com/hclchcl/loon-mac-httpdns-block",
+    "Loon-Mac-Ad-Platforms-Block.plugin": "https://github.com/hclchcl/loon-mac-ad-platforms-block",
+    "Loon-Mac-Ad-Filter.plugin": "https://github.com/hclchcl/loon-mac-ad-filter"
   }
 }

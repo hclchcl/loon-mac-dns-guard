@@ -1,7 +1,7 @@
 #!name = Mac 广告平台拦截器
 #!desc = 拦截清单内广告投放、广告资源与归因平台，使用域名规则，适用于进入 Loon 的 Mac 应用和浏览器。无需证书、脚本或 PROXY；不保证删除同域信息流广告。
 #!author = hclchcl
-#!homepage = https://github.com/hclchcl/loon-mac-dns-guard/blob/main/plugins/docs/ad-platforms.md
+#!homepage = https://github.com/hclchcl/loon-mac-ad-platforms-block
 #!system = macOS
 #!system_version = 13.0
 #!date = 2026-10-28
