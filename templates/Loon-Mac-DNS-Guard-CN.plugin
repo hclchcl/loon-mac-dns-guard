@@ -1,15 +1,15 @@
 #!name = Mac DNS 防泄漏 · 国内分流版
 #!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
-#!desc = v1.2.0：国内清单及 Apple、微软、游戏下载的 CN 条目使用直连阿里 DoH；默认 Cloudflare DoH 经 PROXY。检测网站遵循普通分流，不再特殊处理。需关闭查询回落并使用 Rule 模式。与标准版只启用一个。
+#!desc = v1.2.1：国内清单及 Apple、微软、游戏下载的 CN 条目使用直连阿里 DoH；默认 Cloudflare DoH 经 PROXY。PROXY 只承载 DNS 查询，建议绑定延迟最低地区的 url-test 组（如香港），不必与网页出口相同。需关闭查询回落并使用 Rule 模式。与标准版只启用一个。
 #!author = hclchcl
 #!homepage = https://github.com/hclchcl/loon-mac-dns-guard
 #!system = macOS
 #!system_version = 13.0
-#!date = 2026-10-28
+#!date = 2026-11-04
 #!tag = DNS,DoH,隐私,macOS
 #!type = normal
 
-# v1.2.0 | MIT
+# v1.2.1 | MIT
 # 借鉴 AIsouler/MyClash 的国内、默认及节点引导 DNS 分工；使用 Loon 原生语法独立实现。
 # 生成来源：templates/Loon-Mac-DNS-Guard-CN.plugin + docs/domestic-domains.txt。
 # 不含脚本、MitM、证书、节点凭据、FINAL 或强制业务 DIRECT 规则。
