@@ -50,7 +50,7 @@ python3 scripts/build-domestic-plugin.py
 python3 scripts/build-domestic-plugin.py --check
 ```
 
-构建工具只处理本地文件，不访问网络、不自动拉取域名，也不操作 Loon。没有新增定时更新任务。
+构建工具只处理本地文件，不访问网络、不自动拉取域名，也不操作 Loon。没有新增定时更新任务。它同时生成 Mac 与 iOS 两个国内分流版，并检查两个平台的标准版和国内分流模板在 `[General]` 之后逐字一致：修改规则或端点时，两个平台的文件要一起改，否则 `--check` 失败。
 
 ## 更新与验证边界
 

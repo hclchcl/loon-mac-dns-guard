@@ -1,0 +1,61 @@
+#!name = iOS DNS 防泄漏
+#!icon = https://raw.githubusercontent.com/hclchcl/loon-mac-dns-guard/main/icon.png
+#!desc = v1.0.2：iPhone/iPad 版。Cloudflare DoH 经绑定的 PROXY，拦截进入 Loon 的常见独立 DNS 端口；检测网站走同一代理。PROXY 建议绑定延迟最低地区的 url-test 组，所有解析都要经过它。启用前需关闭查询回落，在主配置加 hijack-dns，并检查其他 DNS 来源；完整步骤见仓库说明。
+#!author = hclchcl
+#!homepage = https://github.com/hclchcl/loon-mac-dns-guard
+#!system = iOS,iPadOS
+#!date = 2026-11-07
+#!tag = DNS,DoH,隐私,iOS
+#!type = normal
+
+# v1.0.2 | MIT
+# iOS/iPadOS 版：规则、DNS 端点与 Host 和 Mac 标准版逐字相同，只有插件信息不同。
+# 不填写最低系统与 Loon 版本：官方文档未说明不匹配时是拒绝导入还是仅提示。
+# 本插件不含脚本、MitM、证书、节点凭据或 FINAL 规则。
+# PROXY 必须绑定一个可用的境外代理策略，不能指向 DIRECT 或可直连回退的组。
+# doh-server 仅追加：启用前核对其他来源的加密 DNS，不会自动替换它们。
+# hijack-dns 不受插件 General 支持，请按 docs/ios.md 合并到主配置。
+
+[General]
+doh-server = https://1.1.1.1/dns-query,https://1.0.0.1/dns-query
+
+[Rule]
+# 固定 IP 的 DoH 端点不需要先做域名解析；保留正常 TLS 证书校验。
+AND,((DEST-PORT,443),(IP-CIDR,1.1.1.1/32,no-resolve)),PROXY
+AND,((DEST-PORT,443),(IP-CIDR,1.0.0.1/32,no-resolve)),PROXY
+# 为独立节点引导 DNS 及可选国内分流版保留直连加密路径。
+# 这两条不向全局 DNS 列表添加阿里 DNS。
+AND,((DEST-PORT,443),(IP-CIDR,223.5.5.5/32,no-resolve)),DIRECT
+AND,((DEST-PORT,443),(IP-CIDR,223.6.6.6/32,no-resolve)),DIRECT
+
+# 让检测页面与代理 DNS 使用相同出口；这些规则本身不能证明没有泄漏。
+DOMAIN-SUFFIX,dnsleaktest.com,PROXY
+DOMAIN-SUFFIX,dnsleak.com,PROXY
+DOMAIN-SUFFIX,ipleak.net,PROXY
+DOMAIN-SUFFIX,expressvpn.com,PROXY
+DOMAIN-SUFFIX,nordvpn.com,PROXY
+DOMAIN-SUFFIX,surfshark.com,PROXY
+
+# 仅作用于进入 Loon 且实际命中这些规则的 TCP/UDP 连接。
+# 主配置 UDP DNS 接管若未生效，53 端口可能被拒绝而不是得到透明代答。
+# 853/784 同时阻断常见 DoT/DoQ，也会影响这些端口上的非 DNS 服务。
+# 本地规则优先于插件规则；必须排查已有放行规则。
+DEST-PORT,53,REJECT
+DEST-PORT,853,REJECT
+DEST-PORT,784,REJECT
+
+[Host]
+# 明确检测域名的解析服务器；根域名与子域名分别声明。
+# 不保证覆盖第三方页面加载的所有外部域名，仍须检查全局 DNS 配置。
+dnsleaktest.com = server:https://1.1.1.1/dns-query
+*.dnsleaktest.com = server:https://1.1.1.1/dns-query
+dnsleak.com = server:https://1.1.1.1/dns-query
+*.dnsleak.com = server:https://1.1.1.1/dns-query
+ipleak.net = server:https://1.1.1.1/dns-query
+*.ipleak.net = server:https://1.1.1.1/dns-query
+expressvpn.com = server:https://1.1.1.1/dns-query
+*.expressvpn.com = server:https://1.1.1.1/dns-query
+nordvpn.com = server:https://1.1.1.1/dns-query
+*.nordvpn.com = server:https://1.1.1.1/dns-query
+surfshark.com = server:https://1.1.1.1/dns-query
+*.surfshark.com = server:https://1.1.1.1/dns-query

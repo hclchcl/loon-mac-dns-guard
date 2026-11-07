@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Render the domestic Loon plugin from its template and reviewed domain list.
+"""Render the domestic Loon plugins (macOS and iOS) from their templates and reviewed domain list.
 
+Also checks that each iOS plugin keeps the same body as its macOS counterpart.
 Only local files are read. This tool never changes Loon settings or fetches data.
 """
 
@@ -10,7 +11,12 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOLVER = "https://223.6.6.6/dns-query"
-OUTPUT = ROOT / "Loon-Mac-DNS-Guard-CN.plugin"
+OUTPUTS = [ROOT / "Loon-Mac-DNS-Guard-CN.plugin", ROOT / "Loon-iOS-DNS-Guard-CN.plugin"]
+# Platform variants differ only in the header; everything from [General] on must match.
+PAIRS = [
+    (ROOT / "Loon-Mac-DNS-Guard.plugin", ROOT / "Loon-iOS-DNS-Guard.plugin"),
+    (ROOT / "templates/Loon-Mac-DNS-Guard-CN.plugin", ROOT / "templates/Loon-iOS-DNS-Guard-CN.plugin"),
+]
 TOKEN = "{{DOMESTIC_HOSTS}}"
 LABEL = r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?"
 DOMAIN = re.compile(rf"(?:{LABEL}(?:\.{LABEL})+|\*\.{LABEL}(?:\.{LABEL})*)")
@@ -18,10 +24,7 @@ DOMAIN = re.compile(rf"(?:{LABEL}(?:\.{LABEL})+|\*\.{LABEL}(?:\.{LABEL})*)")
 RESOLVER_FORMAT = re.compile(r"https://(?:\d{1,3}\.){3}\d{1,3}/dns-query")
 
 
-def render(resolver=RESOLVER):
-    template = (ROOT / "templates" / OUTPUT.name).read_text(encoding="utf-8")
-    if template.count(TOKEN) != 1:
-        raise ValueError("The template must contain exactly one domain-list placeholder")
+def domestic_hosts(resolver):
     lines = []
     seen = set()
     source = ROOT / "docs/domestic-domains.txt"
@@ -39,7 +42,21 @@ def render(resolver=RESOLVER):
         lines.append(f"{line} = server:{resolver}")
     if not seen:
         raise ValueError("The domestic list is empty")
-    return template.replace(TOKEN, "\n".join(lines)).encode("utf-8"), len(seen)
+    return "\n".join(lines), len(seen)
+
+
+def render(output, hosts):
+    template = (ROOT / "templates" / output.name).read_text(encoding="utf-8")
+    if template.count(TOKEN) != 1:
+        raise ValueError(f"{output.name}: the template must contain exactly one domain-list placeholder")
+    return template.replace(TOKEN, hosts).encode("utf-8")
+
+
+def body(path):
+    text = path.read_text(encoding="utf-8")
+    if text.count("[General]") != 1:
+        raise ValueError(f"{path.name} must contain exactly one [General] section")
+    return text[text.index("[General]"):]
 
 
 def main():
@@ -53,14 +70,20 @@ def main():
     args = parser.parse_args()
     if not RESOLVER_FORMAT.fullmatch(args.resolver):
         parser.error("--resolver must look like https://<IPv4>/dns-query")
-    content, count = render(args.resolver)
+    for mac, ios in PAIRS:
+        if body(mac) != body(ios):
+            parser.exit(1, f"{ios.name} body differs from {mac.name}; keep platform variants identical below the header.\n")
+    hosts, count = domestic_hosts(args.resolver)
+    for output in OUTPUTS:
+        content = render(output, hosts)
+        if args.check:
+            if not output.exists() or output.read_bytes() != content:
+                parser.exit(1, f"{output.name} differs from its template/list; run this script without --check.\n")
+        else:
+            output.write_bytes(content)
+            print(f"Generated {output.name}: {count} domestic mappings.")
     if args.check:
-        if not OUTPUT.exists() or OUTPUT.read_bytes() != content:
-            parser.exit(1, "Plugin differs from its template/list; run this script without --check.\n")
-        print(f"Static consistency check passed: {count} domestic mappings.")
-    else:
-        OUTPUT.write_bytes(content)
-        print(f"Generated {OUTPUT.name}: {count} domestic mappings.")
+        print(f"Static consistency check passed: {count} domestic mappings in {len(OUTPUTS)} plugins; platform bodies match.")
 
 
 if __name__ == "__main__":

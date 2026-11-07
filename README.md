@@ -1,6 +1,8 @@
 <img src="icon.png" width="88" height="88" alt="DNS 防泄漏图标">
 
-# Loon for Mac DNS 防泄漏
+# Loon DNS 防泄漏（Mac / iPhone）
+
+> **iPhone / iPad 用户**：使用 iOS 版插件，导入地址和 iPhone 上的设置步骤见 [iOS 说明](docs/ios.md)。iOS 版的规则、端点与国内清单和 Mac 版逐字相同。
 
 三个去广告插件已分别建立独立仓库和主页：
 
@@ -16,18 +18,20 @@
 
 ## 选择一个版本
 
-| 版本 | 默认解析 | 国内解析 | 适用偏好 |
-| --- | --- | --- | --- |
-| [标准版](Loon-Mac-DNS-Guard.plugin) | Cloudflare DoH，经绑定的代理 | 与默认解析相同 | 尽量统一 DNS 出口 |
-| [国内分流版](Loon-Mac-DNS-Guard-CN.plugin) | Cloudflare DoH，经绑定的代理 | `.cn`、中文中国域名及清单内常见国内服务使用阿里 DoH 直连 | 国内解析速度与分流 |
+| 版本 | Mac 文件 | iPhone / iPad 文件 | 默认解析 | 国内解析 | 适用偏好 |
+| --- | --- | --- | --- | --- | --- |
+| 标准版 | [Mac](Loon-Mac-DNS-Guard.plugin) | [iOS](Loon-iOS-DNS-Guard.plugin) | Cloudflare DoH，经绑定的代理 | 与默认解析相同 | 尽量统一 DNS 出口 |
+| 国内分流版 | [Mac](Loon-Mac-DNS-Guard-CN.plugin) | [iOS](Loon-iOS-DNS-Guard-CN.plugin) | Cloudflare DoH，经绑定的代理 | `.cn`、中文中国域名及清单内常见国内服务使用阿里 DoH 直连 | 国内解析速度与分流 |
 
-**两个版本只启用一个。** 国内分流版决定的是 DNS 查询路径；国内网站的实际访问出口继续由你原来的分流规则决定。[域名清单](docs/domestic-domains.txt)不保证完整，也不按 GeoIP 自动识别国内域名。
+**同一设备上两个版本只启用一个。** 国内分流版决定的是 DNS 查询路径；国内网站的实际访问出口继续由你原来的分流规则决定。[域名清单](docs/domestic-domains.txt)不保证完整，也不按 GeoIP 自动识别国内域名。
 
-国内分流版现为 **v1.2.0**：参考 MyClash 的分工，补齐 Apple、微软、NVIDIA 与游戏下载的 CN 条目。新增 386 条匹配项，精简 6 条冗余项后共 **12,595 条国内 DNS 映射**；保留 Claude 已修复的 `223.6.6.6`。DNS 检测网站取消专用代理和解析映射，遵循普通配置流程。详见 [MyClash 优化说明](docs/myclash-optimization.md)。
+国内分流版现为 **v1.2.1**（标准版 v1.0.2），清单内容与 v1.2.0 相同。v1.2.0 参考 MyClash 的分工，补齐 Apple、微软、NVIDIA 与游戏下载的 CN 条目。新增 386 条匹配项，精简 6 条冗余项后共 **12,595 条国内 DNS 映射**；保留 Claude 已修复的 `223.6.6.6`。DNS 检测网站取消专用代理和解析映射，遵循普通配置流程。详见 [MyClash 优化说明](docs/myclash-optimization.md)。
 
 v1.1.0 的常用国内站点对照及 v1.1.1 的端点修复仍见 [CDN 优化说明](docs/cdn-optimization.md)。本次仅进行文件静态检查，没有实机导入或性能测试，不保证固定提速。单个 CDN 节点故障时保留有依据的本地例外，不要用 `server:system` 作为全局解决办法。
 
 ## 安装
+
+以下是 Mac 版步骤；iPhone / iPad 的导入地址与步骤见 [iOS 说明](docs/ios.md)。
 
 1. 先备份当前配置。在 Loon → 插件 → 添加插件中粘贴下面一个地址。
 

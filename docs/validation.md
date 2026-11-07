@@ -1,6 +1,13 @@
 # 制作检查记录与待测范围
 
-日期：2026-10-28（Asia/Shanghai）；实机测试补充于 2026-11-04
+日期：2026-10-28（Asia/Shanghai）；实机测试补充于 2026-11-04；iOS 版静态检查于 2026-11-07
+
+## 2026-11-07 iOS 版静态检查
+
+- `Loon-iOS-DNS-Guard.plugin` 与 `Loon-Mac-DNS-Guard.plugin`、`templates/Loon-iOS-DNS-Guard-CN.plugin` 与 Mac 模板，从 `[General]` 起逐字一致；构建脚本 `--check` 会检查这一点，并已验证 iOS 文件被改动一个字符时检查失败。
+- 两个国内分流版由同一份清单生成，各含 12,595 条映射；生成后 Mac 版文件与提交前逐字节相同。
+- iOS 插件头为 `#!system = iOS,iPadOS`，未填写 `#!system_version` 与 `#!loon_version`，因为官方插件文档没有说明版本不匹配时的处理方式。
+- 未在 iPhone 或 iPad 上导入、运行或测量内存；下文 Mac 实测结论对 iOS 只能作参考。
 
 ## 2026-11-04 实机测试（国内分流版 v1.2.0）
 
